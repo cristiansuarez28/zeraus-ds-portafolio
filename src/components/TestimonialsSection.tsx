@@ -176,7 +176,7 @@ const TestimonialsSection = () => (
   <section
     role="region"
     aria-labelledby="testimonials-title"
-    className="py-20 sm:py-28 bg-secondary overflow-hidden"
+    className="py-16 sm:py-20 bg-secondary overflow-hidden"
   >
     {/* Heading */}
     <motion.div
