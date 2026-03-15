@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { Link } from "react-router-dom";
 import {
   motion,
@@ -54,6 +54,10 @@ const ANIM = {
 const SP: { stiffness: number; damping: number; restDelta: number } =
   { stiffness: 50, damping: 16, restDelta: 0.001 };
 
+// Spring rígido para móvil: menos cálculo, más directo
+const SP_MOBILE: { stiffness: number; damping: number; restDelta: number } =
+  { stiffness: 300, damping: 40, restDelta: 0.01 };
+
 // Rango del scroll donde ocurre la animación de la Z
 const RANGE: [number, number] = [0, 0.5];
 
@@ -94,6 +98,13 @@ const HeroZSection = () => {
   const prefersReduced = useReducedMotion();
   const go             = !prefersReduced;
 
+  // En móvil usamos spring más rígido y sin interpolación de color
+  const isMobile = useMemo(
+    () => typeof window !== "undefined" && window.innerWidth < 768,
+    []
+  );
+  const springCfg = isMobile ? SP_MOBILE : SP;
+
   // scrollYProgress: 0 cuando la sección entra, 1 cuando sale por arriba
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -108,36 +119,36 @@ const HeroZSection = () => {
   const _z1y  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z1.y      : 0]);
   const _z1sc = useTransform(scrollYProgress, RANGE, [1, go ? ANIM.z1.scale  : 1]);
   const _z1r  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z1.rotate : 0]);
-  const  z1c  = useTransform(scrollYProgress, RANGE, ["#F75010", go ? ANIM.z1.color : "#F75010"]);
-  const z1x = useSpring(_z1x, SP);  const z1y  = useSpring(_z1y,  SP);
-  const z1sc= useSpring(_z1sc,SP);  const z1r  = useSpring(_z1r,  SP);
+  const  z1c  = useTransform(scrollYProgress, RANGE, ["#F75010", go && !isMobile ? ANIM.z1.color : "#F75010"]);
+  const z1x = useSpring(_z1x, springCfg);  const z1y  = useSpring(_z1y,  springCfg);
+  const z1sc= useSpring(_z1sc,springCfg);  const z1r  = useSpring(_z1r,  springCfg);
 
   // Z2 ─────────────────────────────────────────────────────────────────────
   const _z2x  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z2.x      : 0]);
   const _z2y  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z2.y      : 0]);
   const _z2sc = useTransform(scrollYProgress, RANGE, [1, go ? ANIM.z2.scale  : 1]);
   const _z2r  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z2.rotate : 0]);
-  const  z2c  = useTransform(scrollYProgress, RANGE, ["#D00952", go ? ANIM.z2.color : "#D00952"]);
-  const z2x = useSpring(_z2x, SP);  const z2y  = useSpring(_z2y,  SP);
-  const z2sc= useSpring(_z2sc,SP);  const z2r  = useSpring(_z2r,  SP);
+  const  z2c  = useTransform(scrollYProgress, RANGE, ["#D00952", go && !isMobile ? ANIM.z2.color : "#D00952"]);
+  const z2x = useSpring(_z2x, springCfg);  const z2y  = useSpring(_z2y,  springCfg);
+  const z2sc= useSpring(_z2sc,springCfg);  const z2r  = useSpring(_z2r,  springCfg);
 
   // Z3 ─────────────────────────────────────────────────────────────────────
   const _z3x  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z3.x      : 0]);
   const _z3y  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z3.y      : 0]);
   const _z3sc = useTransform(scrollYProgress, RANGE, [1, go ? ANIM.z3.scale  : 1]);
   const _z3r  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z3.rotate : 0]);
-  const  z3c  = useTransform(scrollYProgress, RANGE, ["#920087", go ? ANIM.z3.color : "#920087"]);
-  const z3x = useSpring(_z3x, SP);  const z3y  = useSpring(_z3y,  SP);
-  const z3sc= useSpring(_z3sc,SP);  const z3r  = useSpring(_z3r,  SP);
+  const  z3c  = useTransform(scrollYProgress, RANGE, ["#920087", go && !isMobile ? ANIM.z3.color : "#920087"]);
+  const z3x = useSpring(_z3x, springCfg);  const z3y  = useSpring(_z3y,  springCfg);
+  const z3sc= useSpring(_z3sc,springCfg);  const z3r  = useSpring(_z3r,  springCfg);
 
   // Z4 ─────────────────────────────────────────────────────────────────────
   const _z4x  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z4.x      : 0]);
   const _z4y  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z4.y      : 0]);
   const _z4sc = useTransform(scrollYProgress, RANGE, [1, go ? ANIM.z4.scale  : 1]);
   const _z4r  = useTransform(scrollYProgress, RANGE, [0, go ? ANIM.z4.rotate : 0]);
-  const  z4c  = useTransform(scrollYProgress, RANGE, ["#6E00A3", go ? ANIM.z4.color : "#6E00A3"]);
-  const z4x = useSpring(_z4x, SP);  const z4y  = useSpring(_z4y,  SP);
-  const z4sc= useSpring(_z4sc,SP);  const z4r  = useSpring(_z4r,  SP);
+  const  z4c  = useTransform(scrollYProgress, RANGE, ["#6E00A3", go && !isMobile ? ANIM.z4.color : "#6E00A3"]);
+  const z4x = useSpring(_z4x, springCfg);  const z4y  = useSpring(_z4y,  springCfg);
+  const z4sc= useSpring(_z4sc,springCfg);  const z4r  = useSpring(_z4r,  springCfg);
 
   // Scroll indicator: desaparece al primer movimiento
   const scrollHint = useTransform(scrollYProgress, [0, 0.04], [1, 0]);
