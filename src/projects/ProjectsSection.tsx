@@ -335,19 +335,18 @@ const ProjectCard = ({ project, index, cardRef, onOpenModal }: CardProps) => (
       </div>
 
       <div className="mt-5 pt-4 border-t border-border">
-        <a href={project.behance} target="_blank" rel="noopener noreferrer"
-          aria-label={`Abrir proyecto ${project.title} en Behance`}
-          onClick={e => e.stopPropagation()}
-          onKeyDown={e => e.stopPropagation()}
+        <button
+          aria-label={`Ver proyecto ${project.title}`}
+          onClick={e => { e.stopPropagation(); onOpenModal(project); }}
           className="inline-flex items-center gap-1.5 text-xs font-medium text-primary
                      hover:gap-2.5 transition-all duration-200
                      focus-visible:outline-none focus-visible:underline">
-          Ver en Behance
+          Ver proyecto
           <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3" aria-hidden="true">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5"
               strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </a>
+        </button>
       </div>
     </div>
   </motion.article>
