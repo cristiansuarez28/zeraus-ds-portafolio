@@ -143,7 +143,7 @@ const AboutTabsSection = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="rounded-3xl border border-border bg-background overflow-hidden
                      flex flex-col lg:flex-row
-                     min-h-[580px] lg:h-[640px]"
+                     lg:h-[640px]"
         >
 
           {/* ── FOTO ─────────────────────────────────────────────────────── */}
@@ -202,7 +202,7 @@ const AboutTabsSection = () => {
                     // Active → transparent (muestra el bg-background blanco del card)
                     // Inactive → color sólido de la tira
                     background: isActive ? "transparent" : t.color,
-                    flex: isActive ? "4 4 0%" : "0 0 64px",
+                    flex: isActive ? "4 4 0%" : "0 0 72px",
                   }}
                   className="relative cursor-pointer overflow-hidden outline-none
                              focus-visible:ring-2 focus-visible:ring-inset
@@ -243,7 +243,7 @@ const AboutTabsSection = () => {
                     aria-labelledby={`tab-${t.id}`}
                     className="relative z-10 h-full flex flex-col justify-between
                                p-6 sm:p-8 lg:p-10
-                               min-h-[240px] lg:min-h-0 overflow-y-auto"
+                               min-h-[300px] lg:min-h-0 overflow-y-auto"
                     style={{
                       opacity: isActive ? 1 : 0,
                       transition: reduced ? "none" : `opacity 0.35s ${EASE_FN} ${isActive ? "0.18s" : "0s"}`,
