@@ -3,6 +3,7 @@ import HeroZSection from "@/components/HeroZSection";
 import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/projects/ProjectsSection";
 import AboutTabsSection from "@/components/AboutTabsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 
 /* ── Page ── */
@@ -35,6 +36,9 @@ const Index = () => (
 
 {/* ── About ── */}
     <AboutTabsSection />
+
+    {/* ── Testimonios reales ── */}
+    <TestimonialsSection />
 
     {/* ── Contact ── */}
     <ContactSection />

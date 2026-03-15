@@ -13,45 +13,73 @@ import { motion, useReducedMotion } from "framer-motion";
 const TESTIMONIALS = [
   {
     quote:
-      "El Design System que construyó Cristian cambió por completo cómo trabaja nuestro equipo. Los reprocesos bajaron a la mitad y por fin todos hablan el mismo idioma visual.",
-    name: "Carlos Mendoza",
-    role: "CTO · SaaS Startup",
+      "Tuve la oportunidad de trabajar con Cris desde distintas áreas de la organización. Destaca por su capacidad para convertir necesidades del negocio en soluciones visuales claras y funcionales. Es un profesional creativo, colaborativo y muy comprometido con la calidad de su trabajo.",
+    name: "Alexandra Grisales Duque",
+    role: "Especialista Derecho Digital · SaaS",
     color: "#F75010",
   },
   {
     quote:
-      "Lo que más me sorprendió fue la claridad. Cada componente tiene su propósito y ningún desarrollador volvió a preguntarme cómo debía verse algo.",
-    name: "Valentina Ríos",
-    role: "Product Manager · Fintech",
+      "Cristian es innovador en sus propuestas, ha contribuido de forma positiva y muy relevante en nuestros procesos de mejoras y nuevos desarrollos en nuestro software de auditoría. Es orientado a las necesidades de nuestros clientes. Súper recomendado!!",
+    name: "Karem Camargo Ramírez",
+    role: "Contador Público · Auditor",
     color: "#DB1E3F",
   },
   {
     quote:
-      "Entregó exactamente lo que necesitábamos: una interfaz que cualquier usuario entiende sin capacitación. Los números de adopción se dispararon desde el lanzamiento.",
-    name: "Andrés Castellanos",
-    role: "CEO · Plataforma financiera",
+      "Tiene una gran técnica como profesor, su fuerte está en Figma, un programa con el cual tod@s los Diseñadores UX UI estamos involucrados a fondo. Súper recomendado si quieres avanzar con Diseñador.",
+    name: "Martha Liliana Torres Prieto",
+    role: "Diseñadora UX UI",
     color: "#D00952",
   },
   {
     quote:
-      "El rediseño no solo se vio mejor — también convirtió más. Cristian tiene un ojo para los detalles que realmente hace la diferencia en los resultados.",
-    name: "Laura Jiménez",
-    role: "Directora de Marketing · E-commerce",
+      "Cristian es una persona súper activa! Siempre dispuesto a ayudar. Trabajar con él es espectacular, ya que siempre te incentiva a hacer cosas y pensar de manera diferente.",
+    name: "Francina Demattei",
+    role: "Abogada · ART",
     color: "#920087",
   },
   {
     quote:
-      "Contratar a Zeraus fue de las mejores decisiones del año. Desde el primer día entendió el producto, propuso soluciones y entregó en tiempo récord.",
-    name: "Miguel Torres",
-    role: "Fundador · Startup de logística",
+      "Excelente diseñador UX, organizado, un gran maestro y profesional, una buena persona. Aprendí y sigo aprendiendo de él.",
+    name: "Alejandra Espinosa Jiménez",
+    role: "Apoyo PMO · Asistente Administrativa",
     color: "#6E00A3",
   },
   {
     quote:
-      "Trabajar con alguien que entiende tanto diseño como desarrollo es rarísimo. Zeraus es exactamente eso: un puente real entre los dos mundos.",
-    name: "Daniela Vargas",
-    role: "Head of Design · Agencia digital",
+      "Cristian es un excelente compañero, dedicado a los detalles, a indagar cada parte, dispuesto a debatir e investigar las razones que llevan a un cambio, siempre dispuesto a construir un buen proyecto.",
+    name: "Karen Sánchez",
+    role: "UX Design · Promptitude.io",
     color: "#FDB100",
+  },
+  {
+    quote:
+      "Un gran profesional con unas capacidades de liderazgo y altruismo, sin duda un gran formador, siempre ayudando a los demás en lo posible, además de innovar en su día a día.",
+    name: "Cesar Cardona",
+    role: "Universidad Pedagógica Nacional",
+    color: "#F75010",
+  },
+  {
+    quote:
+      "Aprendí mucho en el transcurso de temas vistos y fuera de eso, como persona, excelente profesional, amigo y persona.",
+    name: "Christian David Santa Aldana",
+    role: "Design System · UI-UX Designer",
+    color: "#D00952",
+  },
+  {
+    quote:
+      "Un excelente profesional y diseñador UX UI, gran colega y compañero!!",
+    name: "Andrea Pérez Álvarez",
+    role: "UX UI Designer · Product Designer",
+    color: "#920087",
+  },
+  {
+    quote:
+      "Excelente compañero de equipo.",
+    name: "Christian Sotelo",
+    role: "UXC UI Designer · Figma | Ps | Ai",
+    color: "#6E00A3",
   },
 ];
 
