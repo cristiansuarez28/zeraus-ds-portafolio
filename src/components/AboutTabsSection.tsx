@@ -143,7 +143,7 @@ const AboutTabsSection = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="rounded-3xl border border-border bg-background overflow-hidden
                      flex flex-col lg:flex-row
-                     min-h-[520px] lg:h-[640px]"
+                     min-h-[580px] lg:h-[640px]"
         >
 
           {/* ── FOTO ─────────────────────────────────────────────────────── */}
@@ -202,7 +202,7 @@ const AboutTabsSection = () => {
                     // Active → transparent (muestra el bg-background blanco del card)
                     // Inactive → color sólido de la tira
                     background: isActive ? "transparent" : t.color,
-                    flex: isActive ? "4 4 0%" : "0 0 76px",
+                    flex: isActive ? "4 4 0%" : "0 0 64px",
                   }}
                   className="relative cursor-pointer overflow-hidden outline-none
                              focus-visible:ring-2 focus-visible:ring-inset
@@ -230,8 +230,8 @@ const AboutTabsSection = () => {
                       {t.label}
                     </span>
                     {/* Label horizontal — mobile */}
-                    <span className="lg:hidden text-white font-bold text-sm
-                                     uppercase tracking-widest mt-auto w-full px-6">
+                    <span className="lg:hidden text-white font-bold text-xs
+                                     uppercase tracking-widest mt-auto w-full px-5 pb-1">
                       {t.label}
                     </span>
                   </div>
@@ -242,8 +242,8 @@ const AboutTabsSection = () => {
                     id={`panel-${t.id}`}
                     aria-labelledby={`tab-${t.id}`}
                     className="relative z-10 h-full flex flex-col justify-between
-                               p-8 sm:p-10
-                               min-h-[220px] lg:min-h-0"
+                               p-6 sm:p-8 lg:p-10
+                               min-h-[240px] lg:min-h-0 overflow-y-auto"
                     style={{
                       opacity: isActive ? 1 : 0,
                       transition: reduced ? "none" : `opacity 0.35s ${EASE_FN} ${isActive ? "0.18s" : "0s"}`,
@@ -270,7 +270,7 @@ const AboutTabsSection = () => {
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0 }}
                               transition={{ duration: 0.38, delay: 0.14 }}
-                              className="text-4xl sm:text-5xl lg:text-6xl font-black
+                              className="text-3xl sm:text-5xl lg:text-6xl font-black
                                          text-foreground leading-[1.05]"
                             >
                               {t.title}
@@ -282,7 +282,7 @@ const AboutTabsSection = () => {
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0 }}
                               transition={{ duration: 0.38, delay: 0.24 }}
-                              className="space-y-1.5"
+                              className="space-y-2"
                             >
                               <p className="text-base font-semibold
                                              text-foreground/80 leading-snug">
