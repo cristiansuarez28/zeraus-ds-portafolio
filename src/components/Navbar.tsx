@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import TransitionLink from "./TransitionLink";
 import { useTheme } from "@/hooks/useTheme";
+import logoDark  from "@/assets/logo_dark_zeraus.png";
+import logoLight from "@/assets/logo_ligth_zeraus.png";
 
 const navLinks = [
   { label: "Inicio",     to: "/" },
@@ -43,10 +45,14 @@ const Navbar = () => {
           {/* Logo */}
           <TransitionLink
             to="/"
-            className="text-heading-3 text-gradient font-semibold"
             onClick={() => setMenuOpen(false)}
+            aria-label="Ir al inicio — Zeraus DS"
           >
-            Zeraus
+            <img
+              src={theme === "dark" ? logoDark : logoLight}
+              alt="Zeraus DS"
+              className="h-7 w-auto"
+            />
           </TransitionLink>
 
           {/* Desktop links */}
