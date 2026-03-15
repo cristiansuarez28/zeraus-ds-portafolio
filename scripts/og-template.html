@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--
+  og-template.html — Zeraus DS
+  Plantilla para generar OG images con Playwright.
+  Edita las variables CSS al inicio para cambiar copy, colores o logo.
+  Corre: npm run generate:og
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<style>
+  /* ── Edita aquí para cambiar copy o colores ── */
+  :root {
+    --bg:       #0E0E0E;
+    --accent-1: #6500AA;
+    --accent-2: #FD5C05;
+    --accent-3: #CB005B;
+    --text:     #FFFFFF;
+    --muted:    rgba(255,255,255,0.45);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    background: var(--bg);
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Fondo decorativo — bloques de color (misma paleta del sitio) */
+  .bg-block { position: absolute; opacity: 0.18; border-radius: 4px; }
+  .b1 { width: 320px; height: 320px; top: -80px; right: -60px; background: var(--accent-1); transform: rotate(20deg); }
+  .b2 { width: 220px; height: 220px; bottom: -60px; right: 200px; background: var(--accent-2); transform: rotate(-15deg); }
+  .b3 { width: 160px; height: 160px; bottom: 40px; right: -40px; background: var(--accent-3); transform: rotate(30deg); }
+
+  /* Línea izquierda de color */
+  .stripe {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 8px;
+    background: linear-gradient(180deg, #FFCE5B, #FDB100, #FD5C05, #CB005B, #6500AA, #082280);
+  }
+
+  /* Contenido principal */
+  .content {
+    position: absolute;
+    left: 60px; top: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    max-width: 760px;
+  }
+
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .title {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1.05;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .title span {
+    background: linear-gradient(90deg, #FDB100, #FD5C05, #CB005B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Logo Z — marca de agua */
+  .logo-z {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 200px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    user-select: none;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 36px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-brand {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    opacity: 0.5;
+  }
+
+  .footer-url {
+    font-size: 14px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+  <!-- Bloques decorativos de fondo -->
+  <div class="bg-block b1"></div>
+  <div class="bg-block b2"></div>
+  <div class="bg-block b3"></div>
+
+  <!-- Franja de color izquierda -->
+  <div class="stripe"></div>
+
+  <!-- Z watermark -->
+  <div class="logo-z">Z</div>
+
+  <!-- Contenido -->
+  <div class="content">
+    <p class="label" id="og-label">Design System Lead · UI Designer</p>
+    <h1 class="title" id="og-title">
+      Zeraus DS —<br/>
+      <span id="og-title-accent">Design System</span><br/>
+      Lead &amp; UI
+    </h1>
+    <p class="subtitle" id="og-subtitle">Sistemas, interfaces y productos SaaS</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-brand">ZERAUS DS</span>
+    <span class="footer-url">zerausds.com</span>
+  </div>
+</body>
+</html>

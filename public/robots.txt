@@ -1,0 +1,21 @@
+# robots.txt — Zeraus DS
+# Permite que todos los bots indexen el sitio completo.
+# Actualiza la URL del sitemap si cambias de dominio.
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /
+Disallow: /404
+
+Sitemap: https://zerausds.com/sitemap.xml

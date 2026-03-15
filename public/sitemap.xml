@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  sitemap.xml — Zeraus DS
+  ─────────────────────────────────────────────────────────────
+  SPA estático — actualizar lastmod manualmente cuando cambies contenido.
+  Para añadir páginas: copia un bloque <url> y cambia loc + priority.
+  Prioridades:  1.0 = home  |  0.8 = secciones principales  |  0.6 = sub
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://zerausds.com/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Sección proyectos (anchor en home + ruta propia) -->
+  <url>
+    <loc>https://zerausds.com/#projects</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sección about (anchor en home + ruta propia) -->
+  <url>
+    <loc>https://zerausds.com/#about</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sección contacto (anchor en home + ruta propia) -->
+  <url>
+    <loc>https://zerausds.com/#contact</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Páginas con ruta propia -->
+  <url>
+    <loc>https://zerausds.com/proyectos</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zerausds.com/sobre-mi</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zerausds.com/contacto</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
