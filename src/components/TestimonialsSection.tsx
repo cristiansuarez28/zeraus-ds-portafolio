@@ -84,8 +84,10 @@ const TESTIMONIALS = [
 ];
 
 // Dividir en dos filas
-const ROW_A = TESTIMONIALS.slice(0, 3).concat(TESTIMONIALS.slice(0, 3)); // duplicados para loop
-const ROW_B = TESTIMONIALS.slice(3, 6).concat(TESTIMONIALS.slice(3, 6));
+const HALF_A = TESTIMONIALS.slice(0, 5);
+const HALF_B = TESTIMONIALS.slice(5, 10);
+const ROW_A = [...HALF_A, ...HALF_A, ...HALF_A]; // triplicado para llenar pantallas anchas
+const ROW_B = [...HALF_B, ...HALF_B, ...HALF_B];
 
 // ── Card ──────────────────────────────────────────────────────────────────────
 const TestimonialCard = ({ quote, name, role, color }: (typeof TESTIMONIALS)[number]) => {
