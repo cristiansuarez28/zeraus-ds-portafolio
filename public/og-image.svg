@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#F75010"/>
+      <stop offset="25%"  stop-color="#DB1E3F"/>
+      <stop offset="50%"  stop-color="#D00952"/>
+      <stop offset="75%"  stop-color="#920087"/>
+      <stop offset="100%" stop-color="#6E00A3"/>
+    </linearGradient>
+    <linearGradient id="halo" cx="50%" cy="50%" r="50%" fx="50%" fy="50%" gradientUnits="objectBoundingBox" id="haloG">
+      <stop offset="0%"   stop-color="#6E00A3" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#6E00A3" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="haloG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#920087" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#920087" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0E0E0E"/>
+
+  <!-- Halo decorativo -->
+  <ellipse cx="380" cy="315" rx="340" ry="300" fill="url(#haloG)" opacity="0.6"/>
+
+  <!-- Z assembly — centrada a la izquierda -->
+  <!-- Escala: Z original 264x228 → aquí ~320x276, factor ~1.21, left ~80 top ~177 -->
+
+  <!-- Z1 — barra superior -->
+  <rect x="80" y="177" width="320" height="85" fill="none" stroke="#F75010" stroke-width="2.5"/>
+
+  <!-- Z2 — diagonal -->
+  <polygon points="241,262 400,262 238,348 80,348" fill="none" stroke="#D00952" stroke-width="2.5"/>
+
+  <!-- Z3 — barra inferior izquierda -->
+  <rect x="80" y="348" width="158" height="86" fill="none" stroke="#920087" stroke-width="2.5"/>
+
+  <!-- Z4 — barra inferior derecha -->
+  <rect x="238" y="348" width="162" height="86" fill="none" stroke="#6E00A3" stroke-width="2.5"/>
+
+  <!-- Texto derecha -->
+  <!-- Label pequeño -->
+  <text x="520" y="270" font-family="system-ui, -apple-system, sans-serif"
+        font-size="16" font-weight="600" letter-spacing="4"
+        fill="#888888" text-anchor="start">
+    CRISTIAN SUÁREZ · DESIGN SYSTEMS LEAD
+  </text>
+
+  <!-- Título principal -->
+  <text x="518" y="360" font-family="system-ui, -apple-system, sans-serif"
+        font-size="92" font-weight="800" letter-spacing="-2"
+        fill="url(#textGrad)" text-anchor="start">
+    Zeraus DS
+  </text>
+
+  <!-- Tagline -->
+  <text x="521" y="408" font-family="system-ui, -apple-system, sans-serif"
+        font-size="15" font-weight="600" letter-spacing="3.5"
+        fill="#cccccc" text-anchor="start">
+    ESTRATEGIA VISUAL · PRODUCTO DIGITAL · BRANDING
+  </text>
+
+  <!-- Línea separadora sutil -->
+  <line x1="518" y1="430" x2="760" y2="430" stroke="#333333" stroke-width="1"/>
+
+  <!-- URL -->
+  <text x="521" y="455" font-family="system-ui, -apple-system, sans-serif"
+        font-size="14" fill="#555555" letter-spacing="1">
+    zerausds.com
+  </text>
+</svg>
