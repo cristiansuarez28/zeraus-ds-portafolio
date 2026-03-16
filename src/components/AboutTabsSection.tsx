@@ -209,29 +209,40 @@ const AboutTabsSection = () => {
                              focus-visible:ring-primary/40"
                 >
 
-                  {/* ── INACTIVE: icono outline arriba + label vertical ── */}
+                  {/* ── INACTIVE mobile: label izquierda · icono derecha ── */}
                   <div
-                    className="absolute inset-0 flex flex-col items-start lg:items-center pointer-events-none
-                               pt-3 pl-4 pb-3 lg:pt-8 lg:pl-0 lg:pb-8"
+                    className="lg:hidden absolute inset-0 flex flex-row items-center
+                               justify-between px-5 pointer-events-none"
                     style={{
                       opacity: isActive ? 0 : 1,
                       transition: reduced ? "none" : `opacity 0.25s ${EASE_FN}`,
                     }}
                     aria-hidden="true"
                   >
-                    {/* Icono pequeño outline arriba */}
+                    <span className="text-white font-bold text-xs uppercase tracking-widest">
+                      {t.label}
+                    </span>
                     <div className="w-7 h-7 text-white/75 shrink-0">
                       <TabIcon />
                     </div>
-                    {/* Label vertical — desktop */}
-                    <span className="hidden lg:block text-white font-bold text-[14px]
+                  </div>
+
+                  {/* ── INACTIVE desktop: icono arriba · label vertical abajo ── */}
+                  <div
+                    className="hidden lg:flex absolute inset-0 flex-col items-center
+                               pointer-events-none pt-8 pb-8"
+                    style={{
+                      opacity: isActive ? 0 : 1,
+                      transition: reduced ? "none" : `opacity 0.25s ${EASE_FN}`,
+                    }}
+                    aria-hidden="true"
+                  >
+                    <div className="w-7 h-7 text-white/75 shrink-0">
+                      <TabIcon />
+                    </div>
+                    <span className="text-white font-bold text-[14px]
                                      whitespace-nowrap tracking-[0.18em] uppercase
                                      [writing-mode:vertical-rl] rotate-180 mt-auto">
-                      {t.label}
-                    </span>
-                    {/* Label horizontal — mobile */}
-                    <span className="lg:hidden text-white font-bold text-xs
-                                     uppercase tracking-widest mt-auto w-full px-5 pb-1">
                       {t.label}
                     </span>
                   </div>
