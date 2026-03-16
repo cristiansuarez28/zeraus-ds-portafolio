@@ -211,8 +211,8 @@ const AboutTabsSection = () => {
 
                   {/* ── INACTIVE: icono outline arriba + label vertical ── */}
                   <div
-                    className="absolute inset-0 flex flex-col items-center pointer-events-none
-                               pt-3 pb-3 lg:pt-8 lg:pb-8"
+                    className="absolute inset-0 flex flex-col items-start lg:items-center pointer-events-none
+                               pt-3 pl-4 pb-3 lg:pt-8 lg:pl-0 lg:pb-8"
                     style={{
                       opacity: isActive ? 0 : 1,
                       transition: reduced ? "none" : `opacity 0.25s ${EASE_FN}`,
