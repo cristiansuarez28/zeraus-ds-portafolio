@@ -156,17 +156,14 @@ const DSShowcase = () => {
             className="absolute inset-0 p-10 md:p-16 flex flex-col justify-end"
             style={{ background: `radial-gradient(ellipse at top right, ${s.accent.split(",")[0]}18, transparent 60%)` }}
           >
-            {/* Dot pattern */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px)", backgroundSize: "28px 28px" }}
             />
-            {/* Vertical accent */}
             <div
               className="absolute top-10 left-10 w-1.5 h-14 rounded-full"
               style={{ background: `linear-gradient(180deg, ${s.accent})` }}
             />
-            {/* Text */}
             <div className="relative">
               <span
                 className="text-xs font-bold tracking-[0.2em] uppercase"
@@ -181,7 +178,6 @@ const DSShowcase = () => {
         </AnimatePresence>
       </div>
 
-      {/* Dots */}
       <div className="flex items-center justify-center gap-2 mt-6">
         {slides.map((_, i) => (
           <button
@@ -198,7 +194,6 @@ const DSShowcase = () => {
         ))}
       </div>
 
-      {/* Tab labels */}
       <div className="flex flex-wrap items-center justify-center gap-6 mt-5">
         {slides.map((s, i) => (
           <button
@@ -220,6 +215,7 @@ const DSShowcase = () => {
 const atomicLevels = [
   {
     name: "ÁTOMOS",
+    desc: "Botones, inputs, iconos — los elementos más pequeños e indivisibles.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <circle cx="24" cy="24" r="4" />
@@ -231,6 +227,7 @@ const atomicLevels = [
   },
   {
     name: "MOLÉCULAS",
+    desc: "Combinaciones simples: campo de búsqueda, tarjeta de media.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <circle cx="24" cy="14" r="5" />
@@ -244,6 +241,7 @@ const atomicLevels = [
   },
   {
     name: "ORGANISMOS",
+    desc: "Secciones complejas: navbar, formularios, grids de contenido.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <circle cx="12" cy="12" r="4" /><circle cx="36" cy="12" r="4" />
@@ -258,6 +256,7 @@ const atomicLevels = [
   },
   {
     name: "PLANTILLAS",
+    desc: "Estructura de página: layout sin contenido real aún.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <rect x="5" y="5" width="38" height="38" rx="3" />
@@ -270,6 +269,7 @@ const atomicLevels = [
   },
   {
     name: "PÁGINAS",
+    desc: "Instancias reales con contenido definitivo y contexto final.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <rect x="4" y="6" width="40" height="36" rx="3" />
@@ -302,17 +302,20 @@ const DSAtomicDesign = () => {
       >
         <div className="text-center mb-14">
           <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">METODOLOGÍA</p>
-          <h2 className="text-3xl md:text-4xl font-bold">Principios de Diseño Atómico</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Atomic Design</h2>
+          <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm leading-relaxed">
+            Arquitectura modular que organiza la interfaz desde sus piezas más simples hasta la página completa — garantizando consistencia y reutilización a escala.
+          </p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center">
+        <div className="flex flex-col md:flex-row items-start justify-center gap-0">
           {atomicLevels.map((level, i) => (
-            <div key={level.name} className="flex flex-col md:flex-row items-center">
+            <div key={level.name} className="flex flex-col md:flex-row items-center w-full md:w-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.12, duration: 0.5 }}
-                className="flex flex-col items-center gap-3 px-6 py-4 group cursor-default"
+                className="flex flex-col items-center gap-3 px-4 py-4 group cursor-default flex-1 md:flex-none md:w-36 text-center"
               >
                 <div className="text-muted-foreground/50 group-hover:text-foreground transition-colors duration-300">
                   {level.icon}
@@ -320,13 +323,16 @@ const DSAtomicDesign = () => {
                 <span className="text-[11px] font-bold tracking-[0.15em] text-muted-foreground/60 group-hover:text-foreground transition-colors duration-300">
                   {level.name}
                 </span>
+                <p className="text-[11px] text-muted-foreground/40 leading-relaxed hidden md:block">
+                  {level.desc}
+                </p>
               </motion.div>
               {i < atomicLevels.length - 1 && (
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={inView ? { opacity: 1 } : {}}
                   transition={{ delay: i * 0.12 + 0.25 }}
-                  className="text-muted-foreground/20 text-2xl rotate-90 md:rotate-0 my-1 md:my-0"
+                  className="text-muted-foreground/20 text-2xl rotate-90 md:rotate-0 my-1 md:my-0 md:mb-14"
                 >
                   ›
                 </motion.span>
@@ -335,10 +341,202 @@ const DSAtomicDesign = () => {
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-3 mt-12 pt-8 border-t border-border">
-          <span className="text-xs tracking-widest text-muted-foreground uppercase">METODOLOGÍA</span>
-          <span className="text-muted-foreground/30">/</span>
-          <span className="text-xs font-medium text-muted-foreground">Arquitectura basada en componentes con Atomic Design</span>
+        {/* Pixel Perfect badge */}
+        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-center gap-6">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }} />
+            <span className="text-xs tracking-widest text-muted-foreground uppercase">METODOLOGÍA</span>
+            <span className="text-muted-foreground/30">/</span>
+            <span className="text-xs font-medium text-muted-foreground">Atomic Design + Pixel Perfect</span>
+          </div>
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border">
+            <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3" stroke="currentColor" strokeWidth="1.5">
+              <rect x="1" y="1" width="6" height="6" rx="0.5" />
+              <rect x="9" y="1" width="6" height="6" rx="0.5" />
+              <rect x="1" y="9" width="6" height="6" rx="0.5" />
+              <rect x="9" y="9" width="6" height="6" rx="0.5" />
+            </svg>
+            <span className="text-[10px] font-mono text-muted-foreground/60">grid: 8px baseline</span>
+          </div>
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border">
+            <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3" stroke="currentColor" strokeWidth="1.5">
+              <path d="M8 1v14M1 8h14" />
+            </svg>
+            <span className="text-[10px] font-mono text-muted-foreground/60">spacing: 4/8/12/16/24/32</span>
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+// ─────────────────────────────────────────────
+// OVERVIEW
+// ─────────────────────────────────────────────
+const DSOverview = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section ref={ref} className="container-portfolio pb-28">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="grid md:grid-cols-2 gap-16 items-start"
+      >
+        <div>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>OVERVIEW</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">El Sistema detrás del Producto</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            Durante más de 5 años liderando sistemas de diseño en diferentes empresas, construí y escalé la infraestructura visual que permite a los equipos de producto moverse rápido sin romper la consistencia.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            Desde startups en etapa temprana hasta productos con millones de usuarios, el reto siempre es el mismo: crear un lenguaje compartido entre diseño y desarrollo que sobreviva al crecimiento del equipo y la complejidad del producto.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {[
+            { label: "CONTEXTO", value: "Producto digital B2B/B2C con múltiples plataformas (web, mobile, desktop)" },
+            { label: "EQUIPO", value: "5–20 diseñadores, 15–60 desarrolladores front-end trabajando en paralelo" },
+            { label: "HERRAMIENTAS", value: "Figma (Variables + Auto Layout), Storybook, GitHub, Notion" },
+            { label: "METODOLOGÍA", value: "Atomic Design · Pixel Perfect · Token-first · Accessibility-by-design" },
+          ].map(({ label, value }) => (
+            <div key={label} className="p-5 rounded-xl border border-border">
+              <p className="text-[10px] tracking-[0.18em] uppercase text-muted-foreground/60 mb-1.5">{label}</p>
+              <p className="text-sm text-muted-foreground">{value}</p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+// ─────────────────────────────────────────────
+// THE CHALLENGE
+// ─────────────────────────────────────────────
+const DSChallenge = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  const challenges = [
+    { num: "01", title: "Fragmentación visual", desc: "Cada equipo construía componentes desde cero. El mismo botón tenía 12 variantes distintas distribuidas en el producto." },
+    { num: "02", title: "Deuda de diseño acumulada", desc: "Sin una fuente de verdad, las inconsistencias crecían con cada sprint. El handoff era lento, manual y propenso a errores." },
+    { num: "03", title: "Escala sin estructura", desc: "Al incorporar nuevos diseñadores o desarrolladores, no existía documentación clara. El onboarding tomaba semanas y dependía del conocimiento tribal." },
+    { num: "04", title: "Dark/Light mode sin tokens", desc: "Cambiar temas requería intervención manual en cientos de archivos. No había un sistema de variables que propagara el cambio automáticamente." },
+  ];
+
+  return (
+    <section ref={ref} className="container-portfolio pb-28">
+      <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: PINK }}>THE CHALLENGE</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Los Problemas a Resolver</h2>
+        <p className="text-lg text-muted-foreground max-w-2xl mb-12">
+          Construir un Design System no es solo crear componentes bonitos — es resolver problemas organizacionales y técnicos profundos.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {challenges.map((c, i) => (
+            <motion.div
+              key={c.num}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="relative p-6 rounded-xl border border-border group hover:border-[#E91E8C]/30 transition-colors duration-300"
+            >
+              <span className="text-5xl font-bold text-muted-foreground/8 absolute top-4 right-5 font-mono select-none">{c.num}</span>
+              <div className="w-6 h-px mb-4" style={{ background: `linear-gradient(90deg, ${PINK}, ${PURPLE})` }} />
+              <h3 className="font-bold mb-2">{c.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+// ─────────────────────────────────────────────
+// SOLUTION
+// ─────────────────────────────────────────────
+const DSSolution = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  const solutions = [
+    {
+      title: "Foundation & Standards",
+      color: ORANGE,
+      points: [
+        "Sistema de tokens con CSS custom properties + Figma Variables sincronizadas",
+        "Escala tipográfica y de espaciado basada en grid de 8px (Pixel Perfect)",
+        "Paleta semántica: primitivos → semánticos → componente",
+      ],
+    },
+    {
+      title: "Accesibilidad",
+      color: PINK,
+      points: [
+        "Contraste WCAG AA verificado en cada token de color",
+        "Navegación por teclado y roles ARIA en cada componente",
+        "Estados: hover, focus, active, disabled, error — documentados y probados",
+      ],
+    },
+    {
+      title: "Cross-Platform Consistency",
+      color: PURPLE,
+      points: [
+        "Tokens compartidos entre web (CSS), React Native y documentación",
+        "Variables de Figma conectadas al repositorio vía Style Dictionary",
+        "Dark/Light mode gestionado 100% a nivel de token — cero overrides manuales",
+      ],
+    },
+    {
+      title: "Organizational Buy-In",
+      color: ORANGE,
+      points: [
+        "Workshops de adopción con diseñadores y desarrolladores",
+        "Documentación viva en Storybook + Notion como fuente de verdad",
+        "Versionado semántico (major.minor.patch) con changelog por componente",
+      ],
+    },
+  ];
+
+  return (
+    <section ref={ref} className="container-portfolio pb-28">
+      <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: PURPLE }}>THE SOLUTION</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Cómo lo Resolvimos</h2>
+        <p className="text-lg text-muted-foreground max-w-2xl mb-12">
+          Un sistema con cuatro pilares que ataca los problemas desde la base — tokens, accesibilidad, consistencia entre plataformas y adopción organizacional.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {solutions.map((sol, i) => (
+            <motion.div
+              key={sol.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="p-7 rounded-xl border border-border hover:border-opacity-50 transition-colors duration-300 group"
+              style={{ "--accent": sol.color } as React.CSSProperties}
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-1.5 h-6 rounded-full" style={{ background: sol.color }} />
+                <h3 className="font-bold">{sol.title}</h3>
+              </div>
+              <ul className="space-y-3">
+                {sol.points.map((p) => (
+                  <li key={p} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: sol.color }} />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </section>
@@ -359,6 +557,17 @@ const colorTokens = [
   { name: "--ds-neutral-100", hex: "#F5F5F5", label: "Neutral 100" },
 ];
 
+const figmaTokens = [
+  { collection: "Primitivos", name: "color/orange/500", value: "#FF6B2B", type: "COLOR" },
+  { collection: "Primitivos", name: "color/pink/500", value: "#E91E8C", type: "COLOR" },
+  { collection: "Primitivos", name: "spacing/4", value: "4px", type: "NUMBER" },
+  { collection: "Semánticos", name: "color/brand/primary", value: "↳ color/orange/500", type: "ALIAS" },
+  { collection: "Semánticos", name: "color/feedback/error", value: "↳ color/red/500", type: "ALIAS" },
+  { collection: "Semánticos", name: "spacing/component/md", value: "↳ spacing/16", type: "ALIAS" },
+  { collection: "Componente", name: "button/padding/x", value: "↳ spacing/component/md", type: "ALIAS" },
+  { collection: "Componente", name: "button/color/bg", value: "↳ color/brand/primary", type: "ALIAS" },
+];
+
 const typographyScale = [
   { name: "Display XL", size: "72px", weight: "700", class: "text-6xl font-bold", sample: "Zeraus DS" },
   { name: "Display L", size: "56px", weight: "700", class: "text-5xl font-bold", sample: "Design System" },
@@ -373,9 +582,15 @@ const typographyScale = [
 const spacingTokens = [4, 8, 12, 16, 24, 32, 48, 64, 96, 128];
 
 const DSFoundations = () => {
-  const [tab, setTab] = useState<"colors" | "typography" | "spacing">("colors");
+  const [tab, setTab] = useState<"colors" | "figma" | "typography" | "spacing">("colors");
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  const typeColor: Record<string, string> = {
+    COLOR: ORANGE,
+    NUMBER: PURPLE,
+    ALIAS: PINK,
+  };
 
   return (
     <section ref={ref} className="container-portfolio pb-28">
@@ -386,15 +601,14 @@ const DSFoundations = () => {
           La capa más profunda — variables que conectan las decisiones de diseño con el código de forma trazable y escalable.
         </p>
 
-        {/* Tabs */}
-        <div className="flex gap-1 mb-10 bg-muted/10 p-1 rounded-lg w-fit border border-border">
-          {(["colors", "typography", "spacing"] as const).map((t) => (
+        <div className="flex flex-wrap gap-1 mb-10 bg-muted/10 p-1 rounded-lg w-fit border border-border">
+          {(["colors", "figma", "typography", "spacing"] as const).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
               className={`px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 ${t === tab ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}
             >
-              {t === "colors" ? "Colores" : t === "typography" ? "Tipografía" : "Espaciado"}
+              {t === "colors" ? "Colores" : t === "figma" ? "Figma Variables" : t === "typography" ? "Tipografía" : "Espaciado"}
             </button>
           ))}
         </div>
@@ -417,6 +631,49 @@ const DSFoundations = () => {
                   <p className="text-[10px] text-muted-foreground/40">{c.hex}</p>
                 </div>
               ))}
+            </motion.div>
+          )}
+
+          {tab === "figma" && (
+            <motion.div
+              key="figma"
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="rounded-2xl border border-border overflow-hidden">
+                <div className="border-b border-border px-6 py-3 flex items-center gap-3 bg-muted/5">
+                  <div className="w-3 h-3 rounded-full bg-red-400/60" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
+                  <div className="w-3 h-3 rounded-full bg-green-400/60" />
+                  <span className="ml-2 text-xs text-muted-foreground font-mono">Figma → Variables → Collections</span>
+                </div>
+                <div className="divide-y divide-border/50">
+                  {figmaTokens.map((token, i) => (
+                    <motion.div
+                      key={token.name}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: i * 0.05 }}
+                      className="grid grid-cols-12 px-6 py-3 text-xs font-mono hover:bg-muted/5 transition-colors"
+                    >
+                      <span className="col-span-3 text-muted-foreground/40">{token.collection}</span>
+                      <span className="col-span-5 text-muted-foreground">{token.name}</span>
+                      <span className="col-span-3" style={{ color: typeColor[token.type] || ORANGE }}>{token.value}</span>
+                      <span className="col-span-1 text-right">
+                        <span
+                          className="px-1.5 py-0.5 rounded text-[9px] tracking-wider"
+                          style={{ color: typeColor[token.type], background: `${typeColor[token.type]}15` }}
+                        >
+                          {token.type}
+                        </span>
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              <p className="mt-4 text-xs text-muted-foreground/50 font-mono">
+                * Primitivos → Semánticos → Componente. Los alias propagan cambios automáticamente a todo el sistema.
+              </p>
             </motion.div>
           )}
 
@@ -585,7 +842,6 @@ const DSDocumentation = () => {
         </p>
 
         <div className="rounded-2xl border border-border overflow-hidden">
-          {/* Header */}
           <div className="border-b border-border px-8 py-4 flex items-center gap-3 bg-muted/5">
             <div className="w-3 h-3 rounded-full bg-red-400/60" />
             <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
@@ -638,45 +894,89 @@ const DSDocumentation = () => {
 };
 
 // ─────────────────────────────────────────────
-// GOVERNANCE
+// DESIGN PROCESS
 // ─────────────────────────────────────────────
-const DSGovernance = () => {
+const DSProcess = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
-  const phases = [
-    { num: "01", title: "Identificar", desc: "Se detecta una necesidad o componente recurrente en el producto." },
-    { num: "02", title: "Proponer", desc: "Un diseñador documenta la propuesta con variantes y contexto de uso." },
-    { num: "03", title: "Revisar", desc: "El equipo valida: accesibilidad, consistencia e impacto en el sistema." },
-    { num: "04", title: "Implementar", desc: "Desarrollo implementa con los tokens del sistema y documentación lista." },
-    { num: "05", title: "Publicar", desc: "Se versiona, se comunica al equipo y se actualiza la documentación viva." },
+  const steps = [
+    {
+      num: "01",
+      title: "Audit & Research",
+      color: ORANGE,
+      desc: "Inventario de patrones existentes, benchmarking competitivo y entrevistas con equipos de diseño y desarrollo para entender las fricciones reales.",
+      tags: ["UI Audit", "Entrevistas", "Benchmarking"],
+    },
+    {
+      num: "02",
+      title: "Foundation & Principles",
+      color: PINK,
+      desc: "Definición de tokens de diseño: colores primitivos y semánticos, escala tipográfica, espaciado en grid de 8px y principios rectores del sistema.",
+      tags: ["Tokens", "Figma Variables", "Pixel Perfect"],
+    },
+    {
+      num: "03",
+      title: "Component Development",
+      color: PURPLE,
+      desc: "Construcción de la librería de componentes en Figma y código — con variantes, estados, DO/DON'T y documentación técnica para handoff sin fricción.",
+      tags: ["Atomic Design", "Storybook", "Accesibilidad"],
+    },
+    {
+      num: "04",
+      title: "Adoption & Governance",
+      color: ORANGE,
+      desc: "Onboarding del equipo, workshops de adopción, versionado semántico con changelog y gobernanza continua para garantizar la evolución ordenada del sistema.",
+      tags: ["Versionado", "Workshops", "Documentación viva"],
+    },
   ];
 
   return (
     <section ref={ref} className="container-portfolio pb-28">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>GOBERNANZA</p>
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Cómo Evoluciona el Sistema</h2>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>PROCESO</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Design Process</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-12">
-          Un sistema sin gobernanza se convierte en caos. Este proceso garantiza que cada cambio sea intencional y trazable.
+          Cuatro fases que transforman el caos visual en un sistema coherente, mantenible y adoptado por el equipo completo.
         </p>
 
-        <div className="grid md:grid-cols-5 gap-4">
-          {phases.map((phase, i) => (
+        <div className="grid md:grid-cols-2 gap-6">
+          {steps.map((step, i) => (
             <motion.div
-              key={phase.num}
+              key={step.num}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="relative rounded-xl border border-border p-5 hover:border-[#FF6B2B]/30 transition-colors duration-300 group"
+              className="relative p-7 rounded-xl border border-border hover:border-opacity-50 transition-colors duration-300 group overflow-hidden"
             >
-              <span className="text-xs font-mono text-muted-foreground/30">{phase.num}</span>
-              <div className="w-6 h-px my-3" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})` }} />
-              <h3 className="font-bold mb-2">{phase.title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{phase.desc}</p>
-              {i < phases.length - 1 && (
-                <span className="hidden md:block absolute top-1/2 -right-3 z-10 text-muted-foreground/20 text-lg">›</span>
-              )}
+              <span
+                className="absolute top-5 right-6 text-6xl font-bold font-mono select-none pointer-events-none"
+                style={{ color: `${step.color}10` }}
+              >
+                {step.num}
+              </span>
+              <div className="flex items-center gap-3 mb-4">
+                <span
+                  className="text-sm font-bold font-mono"
+                  style={{ color: step.color }}
+                >
+                  {step.num}
+                </span>
+                <div className="w-4 h-px" style={{ background: step.color }} />
+                <h3 className="font-bold">{step.title}</h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-5">{step.desc}</p>
+              <div className="flex flex-wrap gap-2">
+                {step.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] font-medium px-2.5 py-1 rounded-full"
+                    style={{ color: step.color, background: `${step.color}15` }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -704,7 +1004,7 @@ const DSImpact = () => {
     <section ref={ref} className="container-portfolio pb-32">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
         <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>IMPACTO</p>
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Resultados e Impacto</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Results & Impact</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-16">
           El sistema transformó cómo los equipos construyen y escalan — resultados medibles en eficiencia, consistencia y calidad.
         </p>
@@ -716,7 +1016,7 @@ const DSImpact = () => {
         </div>
 
         <div className="rounded-2xl border border-border p-8">
-          <h3 className="font-bold mb-6">Resultados Adicionales</h3>
+          <h3 className="font-bold mb-6">Additional Outcomes</h3>
           <ul className="space-y-4">
             {outcomes.map((o) => (
               <li key={o} className="flex items-start gap-3 text-muted-foreground">
@@ -750,10 +1050,13 @@ const DesignSystemPage = () => (
       <DSHero />
       <DSShowcase />
       <DSAtomicDesign />
+      <DSOverview />
+      <DSChallenge />
+      <DSSolution />
       <DSFoundations />
       <DSComponents />
       <DSDocumentation />
-      <DSGovernance />
+      <DSProcess />
       <DSImpact />
     </main>
   </>
