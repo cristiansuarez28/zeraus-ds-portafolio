@@ -1,4 +1,4 @@
-import { useCallback, type ReactNode, type MouseEvent } from "react";
+import React, { useCallback, type ReactNode, type MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTransition } from "./TransitionProvider";
 
@@ -6,12 +6,13 @@ interface TransitionLinkProps {
   to: string;
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   onClick?: () => void;
 }
 
 const TRANSITION_DURATION = 700; // ms – matches overlay enter time
 
-const TransitionLink = ({ to, children, className = "", onClick }: TransitionLinkProps) => {
+const TransitionLink = ({ to, children, className = "", style, onClick }: TransitionLinkProps) => {
   const navigate = useNavigate();
   const { start, stop } = useTransition();
 
@@ -31,7 +32,7 @@ const TransitionLink = ({ to, children, className = "", onClick }: TransitionLin
   );
 
   return (
-    <a href={to} onClick={handleClick} className={className}>
+    <a href={to} onClick={handleClick} className={className} style={style}>
       {children}
     </a>
   );
