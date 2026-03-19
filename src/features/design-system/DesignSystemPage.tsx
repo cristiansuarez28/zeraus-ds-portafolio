@@ -729,16 +729,18 @@ const DSFoundations = () => {
           La capa más profunda — variables que conectan las decisiones de diseño con el código de forma trazable y escalable.
         </p>
 
-        <div className="flex flex-wrap gap-1 mb-10 bg-muted/10 p-1 rounded-lg w-fit border border-border">
-          {(["colors", "figma", "typography", "spacing"] as const).map((t) => (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className={`px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 ${t === tab ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}
-            >
-              {t === "colors" ? "Colores" : t === "figma" ? "Figma Variables" : t === "typography" ? "Tipografía" : "Espaciado"}
-            </button>
-          ))}
+        <div className="overflow-x-auto mb-10 pb-1">
+          <div className="flex gap-1 bg-muted/10 p-1 rounded-lg border border-border w-max min-w-full sm:w-fit">
+            {(["colors", "figma", "typography", "spacing"] as const).map((t) => (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={`px-4 sm:px-5 py-2 rounded-md text-sm font-medium whitespace-nowrap transition-all duration-200 ${t === tab ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                {t === "colors" ? "Colores" : t === "figma" ? "Figma Variables" : t === "typography" ? "Tipografía" : "Espaciado"}
+              </button>
+            ))}
+          </div>
         </div>
 
         <AnimatePresence mode="wait">
@@ -1042,6 +1044,7 @@ const DSDocumentation = () => {
 // DESIGN PROCESS
 // ─────────────────────────────────────────────
 const DSProcess = () => {
+  const [open, setOpen] = useState<number | null>(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -1081,49 +1084,69 @@ const DSProcess = () => {
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
         <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>PROCESO</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Design Process</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mb-12">
+        <p className="text-lg text-muted-foreground max-w-2xl mb-10">
           Cuatro fases que transforman el caos visual en un sistema coherente, mantenible y adoptado por el equipo completo.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.num}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="relative p-7 rounded-xl border border-border hover:border-opacity-50 transition-colors duration-300 group overflow-hidden"
-            >
-              <span
-                className="absolute top-5 right-6 text-6xl font-bold font-mono select-none pointer-events-none"
-                style={{ color: `${step.color}10` }}
+        <div className="divide-y divide-border border border-border rounded-2xl overflow-hidden">
+          {steps.map((step, i) => {
+            const isOpen = open === i;
+            return (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.08, duration: 0.4 }}
               >
-                {step.num}
-              </span>
-              <div className="flex items-center gap-3 mb-4">
-                <span
-                  className="text-sm font-bold font-mono"
-                  style={{ color: step.color }}
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-muted/10 transition-colors duration-200 group"
                 >
-                  {step.num}
-                </span>
-                <div className="w-4 h-px" style={{ background: step.color }} />
-                <h3 className="font-bold">{step.title}</h3>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5">{step.desc}</p>
-              <div className="flex flex-wrap gap-2">
-                {step.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] font-medium px-2.5 py-1 rounded-full"
-                    style={{ color: step.color, background: `${step.color}15` }}
+                  <div className="flex items-center gap-4">
+                    <span className="text-sm font-bold font-mono shrink-0" style={{ color: step.color }}>
+                      {step.num}
+                    </span>
+                    <div className="w-4 h-px shrink-0" style={{ background: step.color }} />
+                    <span className="font-semibold text-base">{step.title}</span>
+                  </div>
+                  <motion.span
+                    animate={{ rotate: isOpen ? 45 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="text-2xl text-muted-foreground/50 group-hover:text-foreground transition-colors shrink-0 ml-4"
                   >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                    +
+                  </motion.span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 pt-1" style={{ borderTop: `1px solid ${step.color}20` }}>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">{step.desc}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {step.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-[10px] font-medium px-2.5 py-1 rounded-full"
+                              style={{ color: step.color, background: `${step.color}15` }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
     </section>
@@ -1398,10 +1421,15 @@ const DSCallToAction = () => {
             </svg>
           </a>
           <a
-            href="/proyectos"
+            href="https://www.behance.net/Zerausdesigner"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-semibold border border-border hover:bg-muted/20 transition-colors"
           >
-            Ver más proyectos
+            Ver en Behance
+            <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="2">
+              <path d="M4 12L12 4M12 4H7M12 4v5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </a>
         </motion.div>
 
