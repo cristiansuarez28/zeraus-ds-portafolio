@@ -193,16 +193,16 @@ const SlideTokens = () => (
 );
 
 const SlideComponentes = () => (
-  <div className="space-y-4 w-full">
+  <div className="space-y-4 w-full" aria-hidden="true">
     <div className="flex flex-wrap gap-2">
-      <button className="px-4 py-2 rounded-lg text-white text-xs font-medium" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}>Primario</button>
-      <button className="px-4 py-2 rounded-lg border border-border text-xs font-medium text-foreground/80">Secundario</button>
-      <button className="px-4 py-2 rounded-lg text-xs font-medium text-muted-foreground">Ghost</button>
-      <button className="px-4 py-2 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-medium">Error</button>
+      <button tabIndex={-1} className="px-4 py-2 rounded-lg text-white text-xs font-medium" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}>Primario</button>
+      <button tabIndex={-1} className="px-4 py-2 rounded-lg border border-border text-xs font-medium text-foreground/80">Secundario</button>
+      <button tabIndex={-1} className="px-4 py-2 rounded-lg text-xs font-medium text-muted-foreground">Ghost</button>
+      <button tabIndex={-1} className="px-4 py-2 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-medium">Error</button>
     </div>
     <div className="flex gap-2">
-      <input readOnly placeholder="Input default" className="flex-1 px-3 py-2 rounded-lg border border-border bg-muted/20 text-xs text-muted-foreground focus:outline-none" />
-      <input readOnly placeholder="Focus" className="flex-1 px-3 py-2 rounded-lg text-xs text-muted-foreground focus:outline-none" style={{ border: `1px solid ${ORANGE}` }} />
+      <input readOnly tabIndex={-1} aria-label="Input demo" placeholder="Input default" className="flex-1 px-3 py-2 rounded-lg border border-border bg-muted/20 text-xs text-muted-foreground focus:outline-none" />
+      <input readOnly tabIndex={-1} aria-label="Input focus demo" placeholder="Focus" className="flex-1 px-3 py-2 rounded-lg text-xs text-muted-foreground focus:outline-none" style={{ border: `1px solid ${ORANGE}` }} />
     </div>
     <div className="grid grid-cols-2 gap-2">
       <div className="rounded-lg border border-border p-3">
@@ -942,21 +942,21 @@ const DSComponents = () => {
           {/* Botones */}
           <div className="rounded-2xl border border-border p-8">
             <h3 className="text-xs font-bold tracking-widest uppercase text-muted-foreground mb-6">Botones</h3>
-            <div className="flex flex-wrap gap-4 mb-8">
-              <button className="px-6 py-2.5 rounded-lg text-white text-sm font-medium hover:opacity-90 transition-opacity"
+            <div className="flex flex-wrap gap-4 mb-8" aria-hidden="true">
+              <button tabIndex={-1} className="px-6 py-2.5 rounded-lg text-white text-sm font-medium hover:opacity-90 transition-opacity"
                 style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}>
                 Primario
               </button>
-              <button className="px-6 py-2.5 rounded-lg border border-foreground text-sm font-medium hover:bg-foreground/5 transition-colors">
+              <button tabIndex={-1} className="px-6 py-2.5 rounded-lg border border-foreground text-sm font-medium hover:bg-foreground/5 transition-colors">
                 Secundario
               </button>
-              <button className="px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-muted/20 transition-colors">
+              <button tabIndex={-1} className="px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-muted/20 transition-colors">
                 Ghost
               </button>
-              <button className="px-6 py-2.5 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 text-sm font-medium hover:bg-red-500/20 transition-colors">
+              <button tabIndex={-1} className="px-6 py-2.5 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 text-sm font-medium hover:bg-red-500/20 transition-colors">
                 Destructivo
               </button>
-              <button disabled className="px-6 py-2.5 rounded-lg bg-muted/10 text-muted-foreground text-sm font-medium cursor-not-allowed opacity-40">
+              <button tabIndex={-1} disabled className="px-6 py-2.5 rounded-lg bg-muted/10 text-muted-foreground text-sm font-medium cursor-not-allowed opacity-40">
                 Desactivado
               </button>
             </div>
@@ -977,21 +977,22 @@ const DSComponents = () => {
             <h3 className="text-xs font-bold tracking-widest uppercase text-muted-foreground mb-6">Inputs</h3>
             <div className="grid md:grid-cols-3 gap-5">
               <div>
-                <label className="text-xs text-muted-foreground mb-1.5 block">Default</label>
-                <input type="text" placeholder="Escribe aquí..." readOnly
+                <label htmlFor="demo-input-default" className="text-xs text-muted-foreground mb-1.5 block">Default</label>
+                <input id="demo-input-default" type="text" placeholder="Escribe aquí..." readOnly
                   className="w-full px-4 py-2.5 rounded-lg border border-border bg-muted/10 text-sm focus:outline-none" />
               </div>
               <div>
-                <label className="text-xs mb-1.5 block" style={{ color: ORANGE }}>Focus</label>
-                <input type="text" placeholder="Campo activo" readOnly
+                <label htmlFor="demo-input-focus" className="text-xs mb-1.5 block" style={{ color: ORANGE }}>Focus</label>
+                <input id="demo-input-focus" type="text" placeholder="Campo activo" readOnly
                   className="w-full px-4 py-2.5 rounded-lg bg-muted/10 text-sm focus:outline-none"
                   style={{ border: `1px solid ${ORANGE}` }} />
               </div>
               <div>
-                <label className="text-xs text-red-400 mb-1.5 block">Error</label>
-                <input type="text" defaultValue="texto inválido" readOnly
+                <label htmlFor="demo-input-error" className="text-xs text-red-400 mb-1.5 block">Error</label>
+                <input id="demo-input-error" type="text" defaultValue="texto inválido" readOnly
+                  aria-describedby="demo-input-error-msg"
                   className="w-full px-4 py-2.5 rounded-lg bg-red-500/5 text-sm focus:outline-none border border-red-500" />
-                <p className="text-xs text-red-400 mt-1">Este campo es requerido</p>
+                <p id="demo-input-error-msg" className="text-xs text-red-400 mt-1">Este campo es requerido</p>
               </div>
             </div>
           </div>
@@ -1171,6 +1172,7 @@ const DSProcess = () => {
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
+                  aria-expanded={isOpen}
                   className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-muted/10 transition-colors duration-200 group"
                 >
                   <div className="flex items-center gap-4">
@@ -1333,7 +1335,7 @@ const DSStack = () => {
       desc: "Variables nativas para tokens primitivos y semánticos. Auto Layout para componentes pixel-perfect. Librería compartida como fuente de verdad para todo el equipo.",
       tags: ["Variables", "Components", "Auto Layout", "Prototyping"],
       icon: (
-        <svg viewBox="0 0 38 57" className="w-6 h-6" fill="currentColor">
+        <svg viewBox="0 0 38 57" className="w-6 h-6" fill="currentColor" aria-hidden="true">
           <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/>
           <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 0 1-19 0z"/>
           <path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z"/>
@@ -1349,7 +1351,7 @@ const DSStack = () => {
       desc: "Cada componente documentado en aislamiento — variantes, estados, controles interactivos y guías de uso. El puente entre diseño y desarrollo sin fricción.",
       tags: ["Stories", "Controls", "A11y addon", "Docs"],
       icon: (
-        <svg viewBox="0 0 64 64" className="w-6 h-6" fill="currentColor">
+        <svg viewBox="0 0 64 64" className="w-6 h-6" fill="currentColor" aria-hidden="true">
           <path d="M9.6 2.4L8 17.6l4.8 1.6V57.6L52.8 64l3.2-59.2L9.6 2.4zm26.4 44l-12.8-1.6V28l12.8 1.6V46.4zm0-22.4L23.2 22.4V12l12.8 1.6v10.4z"/>
         </svg>
       ),
@@ -1361,7 +1363,7 @@ const DSStack = () => {
       desc: "Transforma los tokens de Figma en variables CSS, JSON y cualquier formato que el equipo de desarrollo necesite. Un cambio en el token, todos los outputs se actualizan.",
       tags: ["CSS vars", "JSON", "Multi-platform", "Automation"],
       icon: (
-        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/>
           <path d="M7 12h4l2-4 4 8-2-4h-2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -1374,7 +1376,7 @@ const DSStack = () => {
       desc: "Versionado semántico (major.minor.patch), pull requests para propuestas de nuevos componentes, changelog automático y revisión de código antes de publicar al sistema.",
       tags: ["Semantic versioning", "PR reviews", "Changelog", "CI/CD"],
       icon: (
-        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor" aria-hidden="true">
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
         </svg>
       ),
@@ -1386,7 +1388,7 @@ const DSStack = () => {
       desc: "Wiki del sistema de diseño: principios de diseño, guías de contribución, decisiones de arquitectura y roadmap de componentes. Accesible para todo el equipo.",
       tags: ["Wiki", "Principles", "Roadmap", "ADRs"],
       icon: (
-        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor" aria-hidden="true">
           <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.98-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
         </svg>
       ),
@@ -1398,7 +1400,7 @@ const DSStack = () => {
       desc: "Plataforma integral para Design Systems: sincroniza con Figma, transforma tokens en código CSS/Swift/Kotlin y genera la documentación del sistema automáticamente — sin configuración manual.",
       tags: ["Token export", "Figma sync", "Docs generator", "Multi-platform"],
       icon: (
-        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <path d="M12 2L2 7l10 5 10-5-10-5z" strokeLinecap="round" strokeLinejoin="round"/>
           <path d="M2 17l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
           <path d="M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -1488,13 +1490,13 @@ const DSBeforeAfter = () => {
               {/* Botones caóticos */}
               <div>
                 <p className="text-xs text-muted-foreground/50 mb-3 font-mono">// 6 "botones primarios" distintos en el mismo producto</p>
-                <div className="flex flex-wrap gap-2">
-                  <button className="px-4 py-1.5 text-xs text-white rounded" style={{ background: "#2563eb" }}>Guardar</button>
-                  <button className="px-5 py-2 text-sm text-white rounded-full" style={{ background: "#16a34a" }}>Confirmar</button>
-                  <button className="px-3 py-1 text-xs text-white rounded-lg font-bold" style={{ background: "#dc2626" }}>Submit</button>
-                  <button className="px-4 py-2 text-xs text-white" style={{ background: "#7c3aed", borderRadius: 2 }}>Aceptar</button>
-                  <button className="px-4 py-1.5 text-xs text-white rounded-md" style={{ background: "#0891b2" }}>OK</button>
-                  <button className="px-5 py-2 text-sm text-white rounded-xl" style={{ background: "#ea580c" }}>Continuar</button>
+                <div className="flex flex-wrap gap-2" aria-hidden="true">
+                  <button tabIndex={-1} className="px-4 py-1.5 text-xs text-white rounded" style={{ background: "#2563eb" }}>Guardar</button>
+                  <button tabIndex={-1} className="px-5 py-2 text-sm text-white rounded-full" style={{ background: "#16a34a" }}>Confirmar</button>
+                  <button tabIndex={-1} className="px-3 py-1 text-xs text-white rounded-lg font-bold" style={{ background: "#dc2626" }}>Submit</button>
+                  <button tabIndex={-1} className="px-4 py-2 text-xs text-white" style={{ background: "#7c3aed", borderRadius: 2 }}>Aceptar</button>
+                  <button tabIndex={-1} className="px-4 py-1.5 text-xs text-white rounded-md" style={{ background: "#0891b2" }}>OK</button>
+                  <button tabIndex={-1} className="px-5 py-2 text-sm text-white rounded-xl" style={{ background: "#ea580c" }}>Continuar</button>
                 </div>
               </div>
               {/* Tipografía caótica */}
@@ -1547,11 +1549,11 @@ const DSBeforeAfter = () => {
               {/* Botones sistema */}
               <div>
                 <p className="text-xs text-muted-foreground/50 mb-3 font-mono">// 1 componente Button · 4 variantes · mismo token</p>
-                <div className="flex flex-wrap gap-2 items-center">
-                  <button className="px-4 py-2 rounded-lg text-white text-xs font-medium" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}>Primary</button>
-                  <button className="px-4 py-2 rounded-lg border text-xs font-medium border-border text-foreground/80">Secondary</button>
-                  <button className="px-4 py-2 rounded-lg text-xs font-medium text-muted-foreground">Ghost</button>
-                  <button className="px-4 py-2 rounded-lg bg-red-500/10 text-red-500 border border-red-500/20 text-xs font-medium">Destructive</button>
+                <div className="flex flex-wrap gap-2 items-center" aria-hidden="true">
+                  <button tabIndex={-1} className="px-4 py-2 rounded-lg text-white text-xs font-medium" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}>Primary</button>
+                  <button tabIndex={-1} className="px-4 py-2 rounded-lg border text-xs font-medium border-border text-foreground/80">Secondary</button>
+                  <button tabIndex={-1} className="px-4 py-2 rounded-lg text-xs font-medium text-muted-foreground">Ghost</button>
+                  <button tabIndex={-1} className="px-4 py-2 rounded-lg bg-red-500/10 text-red-500 border border-red-500/20 text-xs font-medium">Destructive</button>
                 </div>
                 <p className="text-xs font-mono mt-2" style={{ color: ORANGE }}>--ds-radius: 8px · --ds-color-primary: #FF6B2B</p>
               </div>
