@@ -507,16 +507,18 @@ const DSShowcase = () => {
       </div>
 
       {/* Tab labels */}
-      <div className="flex flex-wrap items-center justify-center gap-5 mt-5">
-        {showcaseTabs.map((t, i) => (
-          <button
-            key={i}
-            onClick={() => setActive(i)}
-            className={`text-xs font-medium tracking-wider uppercase transition-colors duration-300 ${i === active ? "text-foreground" : "text-muted-foreground/40 hover:text-muted-foreground"}`}
-          >
-            {t.label}
-          </button>
-        ))}
+      <div className="overflow-x-auto mt-5 pb-1">
+        <div className="flex items-center justify-start md:justify-center gap-5 w-max md:w-full mx-auto px-1">
+          {showcaseTabs.map((t, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className={`text-xs font-medium tracking-wider uppercase whitespace-nowrap transition-colors duration-300 ${i === active ? "text-foreground" : "text-muted-foreground/40 hover:text-muted-foreground"}`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
       </div>
     </motion.section>
   );
