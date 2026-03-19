@@ -1277,11 +1277,11 @@ const DSImpact = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const outcomes = [
-    "4 módulos de Auditbrain (Auditoría, Reportes, Dashboard, Configuración) unificados bajo un único sistema",
-    "Handoff de 2 semanas reducido a 3 días — sin fricción ni reprocesos entre diseño y desarrollo",
-    "Dark Mode implementado en todo el producto con un único cambio de token CSS — eliminando 200+ overrides manuales",
-    "Gobernanza establecida: versionado semántico, changelog y proceso de contribución para nuevos componentes",
-    "Onboarding de nuevos developers de 3 semanas a 3 días gracias a la documentación viva en Storybook",
+    { label: "4 módulos", detail: "un solo sistema visual" },
+    { label: "Handoff", detail: "de 2 semanas a 3 días" },
+    { label: "Dark Mode", detail: "activado con un token" },
+    { label: "Gobernanza", detail: "versionado + changelog por release" },
+    { label: "Onboarding devs", detail: "de 3 semanas a 3 días" },
   ];
 
   return (
@@ -1301,16 +1301,17 @@ const DSImpact = () => {
 
         <div className="rounded-2xl border border-border p-8">
           <h3 className="font-bold mb-6">Resultados Concretos</h3>
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             {outcomes.map((o) => (
-              <li key={o} className="flex items-start gap-3 text-muted-foreground">
+              <li key={o.label} className="flex items-center gap-3">
                 <span
-                  className="mt-0.5 w-5 h-5 rounded-full shrink-0 flex items-center justify-center text-white text-[9px] font-bold"
+                  className="w-5 h-5 rounded-full shrink-0 flex items-center justify-center text-white text-[9px] font-bold"
                   style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}
                 >
                   ✓
                 </span>
-                {o}
+                <span className="font-semibold text-sm">{o.label}</span>
+                <span className="text-sm text-muted-foreground">— {o.detail}</span>
               </li>
             ))}
           </ul>
