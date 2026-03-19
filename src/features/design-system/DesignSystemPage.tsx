@@ -1386,15 +1386,16 @@ const DSStack = () => {
       ),
     },
     {
-      name: "Zeroheight",
-      role: "Design Handoff",
+      name: "Supernova",
+      role: "DS Platform & Export",
       color: PURPLE,
-      desc: "Portal de documentación público para el equipo — componentes con especificaciones, guías de uso y código listo. Conectado a Figma para mantener el contenido siempre actualizado.",
-      tags: ["Specs", "Code snippets", "Figma sync", "Team portal"],
+      desc: "Plataforma integral para Design Systems: sincroniza con Figma, transforma tokens en código CSS/Swift/Kotlin y genera la documentación del sistema automáticamente — sin configuración manual.",
+      tags: ["Token export", "Figma sync", "Docs generator", "Multi-platform"],
       icon: (
         <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <rect x="3" y="3" width="18" height="18" rx="3"/>
-          <path d="M8 12h8M8 8h5M8 16h3" strokeLinecap="round"/>
+          <path d="M12 2L2 7l10 5 10-5-10-5z" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M2 17l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
     },
