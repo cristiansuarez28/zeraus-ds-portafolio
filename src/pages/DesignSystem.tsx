@@ -1,12 +1,17 @@
-const DesignSystem = () => {
-  return (
-    <main className="min-h-screen pt-24">
-      <div className="container-portfolio py-20">
-        <h1 className="text-5xl font-bold">Design System</h1>
-        <p className="mt-4 text-muted-foreground">En construcción...</p>
+import { lazy, Suspense } from "react";
+
+const DesignSystemPage = lazy(() => import("../features/design-system/DesignSystemPage"));
+
+const DesignSystem = () => (
+  <Suspense
+    fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-muted-foreground text-sm">Cargando...</div>
       </div>
-    </main>
-  );
-};
+    }
+  >
+    <DesignSystemPage />
+  </Suspense>
+);
 
 export default DesignSystem;
