@@ -101,7 +101,7 @@ const DSHero = () => (
       {["Atomic Design", "Pixel Perfect", "Token-first", "WCAG AA", "Figma Variables", "Style Dictionary"].map((badge) => (
         <span
           key={badge}
-          className="text-[11px] font-medium px-3 py-1.5 rounded-full border border-border bg-muted/40 text-muted-foreground"
+          className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-foreground/70 border border-border"
         >
           {badge}
         </span>
@@ -117,7 +117,7 @@ const DSHero = () => (
     >
       <span className="text-[11px] font-mono text-muted-foreground/50">Caso de estudio principal →</span>
       <span
-        className="text-[11px] font-semibold px-3 py-1 rounded-full border border-border bg-muted/40 text-foreground"
+        className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-foreground/70 border border-border"
       >
         Auditbrain
       </span>
@@ -1204,7 +1204,7 @@ const DSProcess = () => {
                           {step.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="text-xs font-medium px-3 py-1 rounded-full border border-border bg-muted/40 text-muted-foreground"
+                              className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-foreground/70 border border-border"
                             >
                               {tag}
                             </span>
@@ -1442,7 +1442,7 @@ const DSStack = () => {
                 {tool.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs font-medium px-3 py-1 rounded-full border border-border bg-muted/40 text-muted-foreground"
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-foreground/70 border border-border"
                   >
                     {tag}
                   </span>
