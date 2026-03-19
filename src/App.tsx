@@ -17,6 +17,7 @@ import Proyectos from "./pages/Proyectos";
 import SobreMi from "./pages/SobreMi";
 import Contacto from "./pages/Contacto";
 import NotFound from "./pages/NotFound";
+import DesignSystem from "./pages/DesignSystem";
 
 const AppContent = () => {
   const { markVisited } = useFirstVisit();
@@ -37,6 +38,7 @@ const AppContent = () => {
         <Route path="/proyectos" element={<Proyectos />} />
         <Route path="/sobre-mi" element={<SobreMi />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/design-system-v2" element={<DesignSystem />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
