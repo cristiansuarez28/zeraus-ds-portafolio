@@ -70,14 +70,6 @@ const CircularProgress = ({
 // ─────────────────────────────────────────────
 const DSHero = () => (
   <section className="container-portfolio pt-28 md:pt-32 pb-20 md:pb-24">
-    <motion.div
-      initial={{ scaleX: 0 }}
-      animate={{ scaleX: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      style={{ originX: 0, background: `linear-gradient(90deg, ${ORANGE}, ${PINK}, ${PURPLE})` }}
-      className="h-px w-24 mb-8 md:mb-10"
-    />
-
     <motion.h1
       initial={{ opacity: 0, y: 32 }}
       animate={{ opacity: 1, y: 0 }}
@@ -141,12 +133,21 @@ const DSHero = () => (
       <span className="text-[11px] text-muted-foreground/40 font-mono">Suite de productos · construido desde cero · 2 años</span>
     </motion.div>
 
+    {/* Gradient divider */}
+    <motion.div
+      initial={{ scaleX: 0, opacity: 0 }}
+      animate={{ scaleX: 1, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+      style={{ originX: 0, background: `linear-gradient(90deg, ${ORANGE}, ${PINK}, ${PURPLE})` }}
+      className="h-px w-full my-8"
+    />
+
     {/* Impact numbers */}
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.45 }}
-      className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-border"
+      className="grid grid-cols-2 sm:grid-cols-4 gap-6"
     >
       {[
         { num: "200+", label: "Componentes\ndocumentados" },
@@ -166,16 +167,6 @@ const DSHero = () => (
       ))}
     </motion.div>
   </section>
-);
-
-// ─────────────────────────────────────────────
-// GRADIENT DIVIDER
-// ─────────────────────────────────────────────
-const GradientDivider = () => (
-  <div
-    className="w-full h-px my-2"
-    style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK}, ${PURPLE})` }}
-  />
 );
 
 // ─────────────────────────────────────────────
@@ -1719,17 +1710,14 @@ const DesignSystemPage = () => (
     <main>
       <DSHero />
       <DSShowcase />
-      <GradientDivider />
       <DSOverview />
       <DSChallenge />
       <DSBeforeAfter />
       <DSSolution />
-      <GradientDivider />
       <DSFoundations />
       <DSComponents />
       <DSDocumentation />
       <DSStack />
-      <GradientDivider />
       <DSProcess />
       <DSImpact />
       <DSCallToAction />
