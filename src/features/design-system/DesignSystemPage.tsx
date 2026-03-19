@@ -1182,6 +1182,254 @@ const DSImpact = () => {
 };
 
 // ─────────────────────────────────────────────
+// BEFORE / AFTER
+// ─────────────────────────────────────────────
+const DSBeforeAfter = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section ref={ref} className="container-portfolio pb-20 md:pb-28">
+      <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: PINK }}>ANTES → DESPUÉS</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">El Impacto Visual</h2>
+        <p className="text-lg text-muted-foreground max-w-2xl mb-12">
+          La diferencia entre un producto sin sistema y uno construido sobre tokens, componentes y gobernanza.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* ANTES */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="rounded-2xl border-2 border-red-500/20 overflow-hidden"
+          >
+            <div className="flex items-center justify-between px-5 py-3 bg-red-500/5 border-b border-red-500/10">
+              <span className="text-xs font-bold tracking-widest uppercase text-red-500">✕ Antes — Sin sistema</span>
+              <span className="text-[10px] text-muted-foreground font-mono">v0 · sin tokens</span>
+            </div>
+            <div className="p-6 space-y-5">
+              {/* Botones caóticos */}
+              <div>
+                <p className="text-[10px] text-muted-foreground/50 mb-3 font-mono">// 6 "botones primarios" distintos en el mismo producto</p>
+                <div className="flex flex-wrap gap-2">
+                  <button className="px-4 py-1.5 text-xs text-white rounded" style={{ background: "#2563eb" }}>Guardar</button>
+                  <button className="px-5 py-2 text-sm text-white rounded-full" style={{ background: "#16a34a" }}>Confirmar</button>
+                  <button className="px-3 py-1 text-xs text-white rounded-lg font-bold" style={{ background: "#dc2626" }}>Submit</button>
+                  <button className="px-4 py-2 text-xs text-white" style={{ background: "#7c3aed", borderRadius: 2 }}>Aceptar</button>
+                  <button className="px-4 py-1.5 text-xs text-white rounded-md" style={{ background: "#0891b2" }}>OK</button>
+                  <button className="px-5 py-2 text-sm text-white rounded-xl" style={{ background: "#ea580c" }}>Continuar</button>
+                </div>
+              </div>
+              {/* Tipografía caótica */}
+              <div>
+                <p className="text-[10px] text-muted-foreground/50 mb-3 font-mono">// tipografía sin escala definida</p>
+                <div className="space-y-1">
+                  <p style={{ fontSize: 22, fontWeight: 900, color: "#1e293b" }}>Título de sección</p>
+                  <p style={{ fontSize: 18, fontWeight: 400, color: "#374151" }}>Subtítulo del módulo</p>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: "#6b7280" }}>LABEL DE CAMPO</p>
+                  <p style={{ fontSize: 15, fontWeight: 400, color: "#111827" }}>Texto de descripción del producto</p>
+                </div>
+              </div>
+              {/* Cards caóticas */}
+              <div>
+                <p className="text-[10px] text-muted-foreground/50 mb-3 font-mono">// 3 estilos de tarjeta sin relación</p>
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="p-3 rounded" style={{ background: "#f0f9ff", border: "2px solid #0ea5e9" }}>
+                    <p style={{ fontSize: 11, fontWeight: 700, color: "#0369a1" }}>Card A</p>
+                    <p style={{ fontSize: 10, color: "#64748b" }}>padding 12px</p>
+                  </div>
+                  <div className="p-2 rounded-2xl shadow-lg" style={{ background: "#fefce8", border: "1px dashed #ca8a04" }}>
+                    <p style={{ fontSize: 12, fontWeight: 600, color: "#92400e" }}>Card B</p>
+                    <p style={{ fontSize: 10, color: "#78716c" }}>padding 8px</p>
+                  </div>
+                  <div className="p-4 rounded-none" style={{ background: "#fdf4ff", border: "3px solid #a855f7" }}>
+                    <p style={{ fontSize: 10, fontWeight: 800, color: "#7e22ce" }}>CARD C</p>
+                    <p style={{ fontSize: 9, color: "#a1a1aa" }}>padding 16px</p>
+                  </div>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-red-500/10">
+                <p className="text-xs text-red-500/70">⚠ 6+ devs · cada pantalla diferente · 0 reutilización · handoff = 2 semanas</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* DESPUÉS */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="rounded-2xl border-2 overflow-hidden"
+            style={{ borderColor: `${ORANGE}40` }}
+          >
+            <div className="flex items-center justify-between px-5 py-3 border-b" style={{ background: `${ORANGE}08`, borderColor: `${ORANGE}15` }}>
+              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: ORANGE }}>✓ Después — Con sistema</span>
+              <span className="text-[10px] text-muted-foreground font-mono">v2.3.0 · token-based</span>
+            </div>
+            <div className="p-6 space-y-5">
+              {/* Botones sistema */}
+              <div>
+                <p className="text-[10px] text-muted-foreground/50 mb-3 font-mono">// 1 componente Button · 4 variantes · mismo token</p>
+                <div className="flex flex-wrap gap-2 items-center">
+                  <button className="px-4 py-2 rounded-lg text-white text-xs font-medium" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}>Primary</button>
+                  <button className="px-4 py-2 rounded-lg border text-xs font-medium border-border text-foreground/80">Secondary</button>
+                  <button className="px-4 py-2 rounded-lg text-xs font-medium text-muted-foreground">Ghost</button>
+                  <button className="px-4 py-2 rounded-lg bg-red-500/10 text-red-500 border border-red-500/20 text-xs font-medium">Destructive</button>
+                </div>
+                <p className="text-[10px] font-mono mt-2" style={{ color: ORANGE }}>--ds-radius: 8px · --ds-color-primary: #FF6B2B</p>
+              </div>
+              {/* Tipografía sistema */}
+              <div>
+                <p className="text-[10px] text-muted-foreground/50 mb-3 font-mono">// escala tipográfica con tokens</p>
+                <div className="space-y-1">
+                  <div className="flex items-baseline gap-3">
+                    <p className="text-xl font-bold">Título de sección</p>
+                    <span className="text-[9px] font-mono text-muted-foreground/40">--ds-text-xl / 700</span>
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <p className="text-base font-semibold text-muted-foreground">Subtítulo del módulo</p>
+                    <span className="text-[9px] font-mono text-muted-foreground/40">--ds-text-base / 600</span>
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground/60">Label de campo</p>
+                    <span className="text-[9px] font-mono text-muted-foreground/40">--ds-text-xs / 500</span>
+                  </div>
+                </div>
+              </div>
+              {/* Cards sistema */}
+              <div>
+                <p className="text-[10px] text-muted-foreground/50 mb-3 font-mono">// 1 componente Card · 3 variantes · mismo spacing</p>
+                <div className="grid grid-cols-3 gap-2">
+                  {["Base", "Featured", "Premium"].map((v, i) => (
+                    <div key={v} className="p-3 rounded-lg border border-border" style={i === 2 ? { background: `linear-gradient(135deg, ${ORANGE}10, ${PURPLE}08)` } : {}}>
+                      <div className="w-4 h-4 rounded mb-2" style={{ background: `linear-gradient(135deg, ${[ORANGE, PINK, PURPLE][i]}, ${[PINK, PURPLE, ORANGE][i]})` }} />
+                      <p className="text-[10px] font-semibold">{v}</p>
+                      <p className="text-[9px] font-mono text-muted-foreground/40 mt-0.5">p-3 · r-lg</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[10px] font-mono mt-2" style={{ color: PURPLE }}>--ds-spacing-12 · --ds-radius-lg · reutilizable ✓</p>
+              </div>
+              <div className="pt-3 border-t" style={{ borderColor: `${ORANGE}20` }}>
+                <p className="text-xs" style={{ color: ORANGE }}>✓ 1 sistema · consistencia total · handoff = 2 días</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+// ─────────────────────────────────────────────
+// CALL TO ACTION
+// ─────────────────────────────────────────────
+const DSCallToAction = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section ref={ref} className="container-portfolio pb-32">
+      <motion.div
+        initial={{ opacity: 0, y: 32 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7 }}
+        className="relative rounded-2xl overflow-hidden p-10 md:p-16 text-center"
+        style={{
+          background: `radial-gradient(ellipse at center, ${ORANGE}12, transparent 65%), radial-gradient(ellipse at top right, ${PURPLE}10, transparent 50%)`,
+          backgroundImage: `radial-gradient(ellipse at center, ${ORANGE}12, transparent 65%), radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px)`,
+          backgroundSize: "auto, 28px 28px",
+          border: `1px solid ${ORANGE}25`,
+        }}
+      >
+        {/* Gradient line top */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px"
+          style={{ background: `linear-gradient(90deg, transparent, ${ORANGE}, ${PINK}, transparent)` }}
+        />
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1 }}
+          className="text-xs font-semibold tracking-[0.2em] uppercase mb-4"
+          style={{ color: ORANGE }}
+        >
+          ¿TRABAJAMOS JUNTOS?
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.15 }}
+          className="text-4xl md:text-6xl font-bold mb-5 leading-tight"
+        >
+          ¿Listo para un sistema{" "}
+          <span style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK}, ${PURPLE})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            que escala?
+          </span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="text-lg text-muted-foreground max-w-xl mx-auto mb-10"
+        >
+          Desde la arquitectura de tokens hasta la adopción del equipo — construyo sistemas que perduran, escalan y eliminan la deuda de diseño.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.25 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="/contacto"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+            style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}
+          >
+            Hablemos de tu producto
+            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="2">
+              <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+          <a
+            href="/proyectos"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-semibold border border-border hover:bg-muted/20 transition-colors"
+          >
+            Ver más proyectos
+          </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.4 }}
+          className="flex flex-wrap items-center justify-center gap-6 mt-10 pt-8 border-t border-border/50"
+        >
+          {[
+            { label: "Figma", icon: "◈" },
+            { label: "Storybook", icon: "⬡" },
+            { label: "Tokens", icon: "▣" },
+            { label: "WCAG AA", icon: "✓" },
+            { label: "React", icon: "◯" },
+          ].map((tool) => (
+            <div key={tool.label} className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
+              <span style={{ color: ORANGE }}>{tool.icon}</span>
+              {tool.label}
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+};
+
+// ─────────────────────────────────────────────
 // PAGE
 // ─────────────────────────────────────────────
 const DesignSystemPage = () => (
@@ -1196,12 +1444,14 @@ const DesignSystemPage = () => (
       <DSShowcase />
       <DSOverview />
       <DSChallenge />
+      <DSBeforeAfter />
       <DSSolution />
       <DSFoundations />
       <DSComponents />
       <DSDocumentation />
       <DSProcess />
       <DSImpact />
+      <DSCallToAction />
     </main>
   </>
 );
