@@ -29,8 +29,8 @@ const CircularProgress = ({
   const gradId = `circ-grad-${uid}`;
 
   return (
-    <div ref={ref} className="flex flex-col items-center gap-5">
-      <div className="relative w-36 h-36">
+    <div ref={ref} className="flex flex-col items-center gap-3 md:gap-5">
+      <div className="relative w-20 h-20 md:w-36 md:h-36">
         <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
           <circle cx="50" cy="50" r={radius} fill="none" strokeWidth="7" className="stroke-muted/20" />
           <motion.circle
@@ -50,7 +50,7 @@ const CircularProgress = ({
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.span
-            className="text-3xl font-bold"
+            className="text-lg md:text-3xl font-bold"
             style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
@@ -60,7 +60,7 @@ const CircularProgress = ({
           </motion.span>
         </div>
       </div>
-      <p className="text-sm text-muted-foreground text-center max-w-[160px] leading-relaxed">{description}</p>
+      <p className="text-[10px] md:text-sm text-muted-foreground text-center max-w-[120px] md:max-w-[160px] leading-relaxed">{description}</p>
     </div>
   );
 };
@@ -466,7 +466,7 @@ const DSShowcase = () => {
             }}
           >
             {/* Left: text */}
-            <div className="flex flex-col justify-center p-7 md:p-12">
+            <div className="flex flex-col justify-center p-7 lg:p-12">
               <div
                 className="w-1.5 h-8 rounded-full mb-5"
                 style={{ background: `linear-gradient(180deg, ${tab.accent})` }}
@@ -482,7 +482,7 @@ const DSShowcase = () => {
             </div>
 
             {/* Right: visual content */}
-            <div className="flex items-center justify-center p-5 md:p-10 border-t md:border-t-0 md:border-l border-border/40 min-h-[220px]">
+            <div className="flex items-center justify-center p-5 lg:p-10 border-t md:border-t-0 md:border-l border-border/40 min-h-[220px]">
               {tab.content}
             </div>
           </motion.div>
@@ -496,11 +496,11 @@ const DSShowcase = () => {
             key={i}
             onClick={() => setActive(i)}
             aria-label={`Slide ${i + 1}`}
-            className="transition-all duration-300 rounded-full"
+            className="transition-all duration-300 rounded-full bg-muted/40 p-2 -m-2"
             style={{
               width: i === active ? 24 : 8,
               height: 8,
-              background: i === active ? `linear-gradient(90deg, ${ORANGE}, ${PINK})` : "rgba(255,255,255,0.15)",
+              background: i === active ? `linear-gradient(90deg, ${ORANGE}, ${PINK})` : undefined,
             }}
           />
         ))}
@@ -811,7 +811,7 @@ const DSFoundations = () => {
                       <p className="text-[9px] text-muted-foreground/40 mt-1.5">{layer.note}</p>
                     </div>
                     {i < arr.length - 1 && (
-                      <span className="text-xl text-muted-foreground/30 shrink-0 sm:block hidden">›</span>
+                      <span className="text-xl text-muted-foreground/30 shrink-0">›</span>
                     )}
                   </div>
                 ))}
@@ -1004,7 +1004,7 @@ const DSComponents = () => {
                 <h4 className="font-semibold mb-1">Tarjeta Destacada</h4>
                 <p className="text-sm text-muted-foreground">Variante con acento para contenido prioritario.</p>
               </div>
-              <div className="rounded-xl border border-white/5 p-5 cursor-default"
+              <div className="rounded-xl border border-border p-5 cursor-default"
                 style={{ background: `linear-gradient(135deg, ${ORANGE}15, ${PINK}08, ${PURPLE}12)` }}>
                 <div className="w-8 h-8 rounded-lg mb-4" style={{ background: `linear-gradient(135deg, ${PURPLE}, ${ORANGE})` }} />
                 <h4 className="font-semibold mb-1">Tarjeta Premium</h4>
@@ -1084,7 +1084,7 @@ const DSDocumentation = () => {
           {/* Token → Component connection */}
           <div className="border-t border-border px-8 py-6">
             <p className="text-xs tracking-widest uppercase text-muted-foreground mb-4">TOKENS USADOS POR ESTE COMPONENTE</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
                 { token: "--ds-color-primary", use: "background (primary)", color: ORANGE },
                 { token: "--ds-color-secondary", use: "border (secondary)", color: PINK },
@@ -1222,7 +1222,7 @@ const DSProcess = () => {
           className="mt-10 rounded-2xl border border-border p-6 md:p-8"
         >
           <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: PURPLE }}>ROADMAP DEL SISTEMA</p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { quarter: "Q1 · 2023", label: "Foundations", status: "done", items: ["Color tokens", "Tipografía", "Espaciado", "Grid 8px"] },
               { quarter: "Q2 · 2023", label: "Core Components", status: "done", items: ["Button, Input, Card", "Form patterns", "Storybook setup", "Accesibilidad base"] },
@@ -1285,7 +1285,7 @@ const DSImpact = () => {
           2 años construyendo el sistema de diseño de Auditbrain — resultados medibles en eficiencia, consistencia y adopción.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-16 mb-12 md:mb-16">
+        <div className="grid grid-cols-3 gap-4 md:gap-16 mb-12 md:mb-16">
           <CircularProgress value={75} description="Reducción en tiempo de handoff — de 2 semanas a 3 días en Auditbrain" uid="m1" />
           <CircularProgress value={80} description="Menos reprocesos por inconsistencias en los 4 módulos del producto" uid="m2" />
           <CircularProgress value={90} description="Adopción del Design System por los equipos de producto de Auditbrain" uid="m3" />
