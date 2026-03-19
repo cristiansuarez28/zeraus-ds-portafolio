@@ -11,53 +11,37 @@
   <!-- Home -->
   <url>
     <loc>https://www.zerausds.com/</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Sección proyectos (anchor en home + ruta propia) -->
+  <!-- Design System — caso de estudio principal -->
   <url>
-    <loc>https://www.zerausds.com/#projects</loc>
-    <lastmod>2026-03-12</lastmod>
+    <loc>https://www.zerausds.com/designsystempro</loc>
+    <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Sección about (anchor en home + ruta propia) -->
-  <url>
-    <loc>https://www.zerausds.com/#about</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Sección contacto (anchor en home + ruta propia) -->
-  <url>
-    <loc>https://www.zerausds.com/#contact</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <!-- Páginas con ruta propia -->
   <url>
     <loc>https://www.zerausds.com/proyectos</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.zerausds.com/sobre-mi</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.zerausds.com/contacto</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
