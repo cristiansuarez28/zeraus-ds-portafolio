@@ -459,7 +459,17 @@ const DSShowcase = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -16 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="grid md:grid-cols-2"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.08}
+            onDragEnd={(_, info) => {
+              if (info.offset.x < -50 || info.velocity.x < -400) {
+                setActive((prev) => Math.min(prev + 1, showcaseTabs.length - 1));
+              } else if (info.offset.x > 50 || info.velocity.x > 400) {
+                setActive((prev) => Math.max(prev - 1, 0));
+              }
+            }}
+            className="grid md:grid-cols-2 cursor-grab active:cursor-grabbing"
             style={{
               backgroundImage: `radial-gradient(ellipse at top right, ${tab.accent.split(",")[0].trim()}14, transparent 55%), radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px)`,
               backgroundSize: "auto, 28px 28px",
