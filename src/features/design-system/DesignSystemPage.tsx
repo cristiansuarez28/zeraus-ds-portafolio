@@ -120,22 +120,272 @@ const DSHero = () => (
 );
 
 // ─────────────────────────────────────────────
-// SHOWCASE CAROUSEL
+// SHOWCASE CAROUSEL — visual content per tab
 // ─────────────────────────────────────────────
-const slides = [
-  { id: 0, label: "Tokens", title: "Fundamentos del Sistema", description: "Colores, tipografía y espaciado como lenguaje común entre diseño y desarrollo.", accent: `${ORANGE}, ${PINK}` },
-  { id: 1, label: "Componentes", title: "Librería de Componentes", description: "Átomos reutilizables: botones, inputs, tarjetas — consistentes en todo el producto.", accent: `${PINK}, ${PURPLE}` },
-  { id: 2, label: "Patrones", title: "Patrones de Interfaz", description: "Soluciones recurrentes documentadas: formularios, navegación, estados vacíos.", accent: `${PURPLE}, ${ORANGE}` },
-  { id: 3, label: "Documentación", title: "Documentación Viva", description: "Cada componente con uso, variantes, DO/DON'T y código listo para desarrolladores.", accent: `${ORANGE}, ${PURPLE}` },
-  { id: 4, label: "Temas", title: "Sistema de Temas", description: "Dark/Light mode a nivel de tokens — un cambio, todo el sistema se actualiza.", accent: `${PINK}, ${ORANGE}` },
-  { id: 5, label: "Accesibilidad", title: "Accesibilidad por Diseño", description: "Contraste WCAG AA garantizado, navegación por teclado y aria en cada componente.", accent: `${PURPLE}, ${PINK}` },
+
+const SlideTokens = () => (
+  <div className="grid grid-cols-2 gap-3 w-full">
+    {[
+      { name: "--ds-color-primary", hex: ORANGE },
+      { name: "--ds-color-secondary", hex: PINK },
+      { name: "--ds-color-tertiary", hex: PURPLE },
+      { name: "--ds-neutral-900", hex: "#0A0A0A" },
+      { name: "--ds-neutral-700", hex: "#1A1A1A" },
+      { name: "--ds-neutral-500", hex: "#525252" },
+    ].map((c) => (
+      <div key={c.name} className="flex items-center gap-2.5">
+        <div className="w-8 h-8 rounded-lg shrink-0 border border-white/10" style={{ backgroundColor: c.hex }} />
+        <span className="text-[10px] font-mono text-muted-foreground/70 truncate">{c.name}</span>
+      </div>
+    ))}
+    <div className="col-span-2 mt-1 pt-3 border-t border-border/40">
+      <p className="text-[10px] font-mono text-muted-foreground/40">
+        <span style={{ color: ORANGE }}>--ds-spacing-4</span>{" "}→ 4px &nbsp;|&nbsp;{" "}
+        <span style={{ color: PINK }}>--ds-spacing-8</span>{" "}→ 8px &nbsp;|&nbsp;{" "}
+        <span style={{ color: PURPLE }}>--ds-spacing-16</span>{" "}→ 16px
+      </p>
+    </div>
+  </div>
+);
+
+const SlideComponentes = () => (
+  <div className="space-y-4 w-full">
+    <div className="flex flex-wrap gap-2">
+      <button className="px-4 py-2 rounded-lg text-white text-xs font-medium" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}>Primario</button>
+      <button className="px-4 py-2 rounded-lg border border-white/20 text-xs font-medium text-white/80">Secundario</button>
+      <button className="px-4 py-2 rounded-lg text-xs font-medium text-white/50">Ghost</button>
+      <button className="px-4 py-2 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-medium">Error</button>
+    </div>
+    <div className="flex gap-2">
+      <input readOnly placeholder="Input default" className="flex-1 px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-xs text-white/60 focus:outline-none" />
+      <input readOnly placeholder="Focus" className="flex-1 px-3 py-2 rounded-lg text-xs text-white/60 focus:outline-none" style={{ border: `1px solid ${ORANGE}` }} />
+    </div>
+    <div className="grid grid-cols-2 gap-2">
+      <div className="rounded-lg border border-white/10 p-3">
+        <div className="w-5 h-5 rounded mb-2" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }} />
+        <p className="text-xs font-semibold">Card Base</p>
+        <p className="text-[10px] text-white/40 mt-0.5">Hover state activo</p>
+      </div>
+      <div className="rounded-lg border border-white/5 p-3" style={{ background: `linear-gradient(135deg, ${ORANGE}12, ${PURPLE}10)` }}>
+        <div className="w-5 h-5 rounded mb-2" style={{ background: `linear-gradient(135deg, ${PURPLE}, ${ORANGE})` }} />
+        <p className="text-xs font-semibold">Card Premium</p>
+        <p className="text-[10px] text-white/40 mt-0.5">Fondo degradado</p>
+      </div>
+    </div>
+  </div>
+);
+
+const SlidePatrones = () => (
+  <div className="w-full space-y-2.5">
+    {/* Mini navbar */}
+    <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 flex items-center justify-between">
+      <div className="flex items-center gap-2">
+        <div className="w-4 h-4 rounded" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }} />
+        <div className="flex gap-2">
+          <div className="w-8 h-1.5 rounded bg-white/20" /><div className="w-8 h-1.5 rounded bg-white/10" /><div className="w-8 h-1.5 rounded bg-white/10" />
+        </div>
+      </div>
+      <div className="w-12 h-5 rounded" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})`, opacity: 0.8 }} />
+    </div>
+    {/* Hero block */}
+    <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-3 space-y-2">
+      <div className="w-3/4 h-3 rounded bg-white/30" />
+      <div className="w-1/2 h-2 rounded bg-white/15" />
+      <div className="w-24 h-5 rounded mt-2" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})`, opacity: 0.7 }} />
+    </div>
+    {/* Card grid */}
+    <div className="grid grid-cols-3 gap-2">
+      {[0, 1, 2].map((i) => (
+        <div key={i} className="rounded-lg border border-white/10 bg-white/5 p-2 space-y-1.5">
+          <div className="w-full h-6 rounded bg-white/10" />
+          <div className="w-3/4 h-1.5 rounded bg-white/15" />
+          <div className="w-1/2 h-1.5 rounded bg-white/10" />
+        </div>
+      ))}
+    </div>
+    <p className="text-[10px] text-white/30 font-mono">navbar · hero · card-grid · form · empty-state</p>
+  </div>
+);
+
+const SlideDocumentacion = () => (
+  <div className="w-full rounded-xl border border-white/10 overflow-hidden text-xs font-mono">
+    <div className="px-3 py-2 bg-white/5 border-b border-white/10 flex items-center gap-1.5">
+      <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
+      <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
+      <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
+      <span className="ml-2 text-white/30">Button.docs.tsx</span>
+    </div>
+    <div className="p-4 space-y-1 text-[11px]">
+      <p><span style={{ color: PURPLE }}>interface</span> <span style={{ color: ORANGE }}>ButtonProps</span> {"{"}</p>
+      <p className="pl-4"><span style={{ color: PINK }}>variant</span>: <span style={{ color: ORANGE }}>'primary'</span> | <span style={{ color: ORANGE }}>'secondary'</span> | <span style={{ color: ORANGE }}>'ghost'</span></p>
+      <p className="pl-4"><span style={{ color: PINK }}>size</span>: <span style={{ color: ORANGE }}>'sm'</span> | <span style={{ color: ORANGE }}>'md'</span> | <span style={{ color: ORANGE }}>'lg'</span></p>
+      <p className="pl-4"><span style={{ color: PINK }}>disabled</span>?: <span style={{ color: PURPLE }}>boolean</span></p>
+      <p className="pl-4"><span style={{ color: PINK }}>onClick</span>?: <span style={{ color: PURPLE }}>() ={">"} void</span></p>
+      <p>{"}"}</p>
+      <p className="mt-2 text-white/20">{"// versión: v2.3.0 · estado: estable · WCAG AA ✓"}</p>
+    </div>
+  </div>
+);
+
+const SlideTemas = () => (
+  <div className="w-full grid grid-cols-2 gap-3">
+    {/* Dark */}
+    <div className="rounded-xl border border-white/10 overflow-hidden">
+      <div className="bg-[#0A0A0A] px-3 py-2 border-b border-white/10">
+        <span className="text-[10px] text-white/30 font-mono">dark mode</span>
+      </div>
+      <div className="bg-[#0A0A0A] p-3 space-y-2">
+        <div className="flex gap-1.5 items-center">
+          <div className="w-4 h-4 rounded" style={{ background: ORANGE }} />
+          <span className="text-[10px] font-mono text-white/50">--ds-bg: #0A0A0A</span>
+        </div>
+        <div className="w-full h-6 rounded bg-white/5 border border-white/10 flex items-center px-2">
+          <span className="text-[10px] text-white/40">Texto claro</span>
+        </div>
+        <div className="w-16 h-5 rounded text-[10px] flex items-center justify-center text-white font-medium" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})` }}>CTA</div>
+      </div>
+    </div>
+    {/* Light */}
+    <div className="rounded-xl border border-black/10 overflow-hidden">
+      <div className="bg-[#F5F5F5] px-3 py-2 border-b border-black/10">
+        <span className="text-[10px] text-black/30 font-mono">light mode</span>
+      </div>
+      <div className="bg-[#F5F5F5] p-3 space-y-2">
+        <div className="flex gap-1.5 items-center">
+          <div className="w-4 h-4 rounded" style={{ background: ORANGE }} />
+          <span className="text-[10px] font-mono text-black/50">--ds-bg: #F5F5F5</span>
+        </div>
+        <div className="w-full h-6 rounded bg-black/5 border border-black/10 flex items-center px-2">
+          <span className="text-[10px] text-black/40">Texto oscuro</span>
+        </div>
+        <div className="w-16 h-5 rounded text-[10px] flex items-center justify-center text-white font-medium" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})` }}>CTA</div>
+      </div>
+    </div>
+    <p className="col-span-2 text-[10px] font-mono text-white/30">Un cambio en el token → todo el sistema se actualiza</p>
+  </div>
+);
+
+const SlideAccesibilidad = () => (
+  <div className="w-full space-y-3">
+    {[
+      { label: "Primary / Dark BG", ratio: "7.2:1", pass: "AAA", color: ORANGE, pct: 90 },
+      { label: "Secondary / Dark BG", ratio: "5.8:1", pass: "AA", color: PINK, pct: 72 },
+      { label: "Muted text / Dark BG", ratio: "4.6:1", pass: "AA", color: "#A3A3A3", pct: 58 },
+      { label: "Disabled / Dark BG", ratio: "2.1:1", pass: "FAIL", color: "#525252", pct: 26 },
+    ].map((item) => (
+      <div key={item.label}>
+        <div className="flex items-center justify-between mb-1">
+          <span className="text-[10px] text-white/50">{item.label}</span>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono" style={{ color: item.color }}>{item.ratio}</span>
+            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${item.pass === "FAIL" ? "bg-red-500/20 text-red-400" : "bg-green-500/20 text-green-400"}`}>{item.pass}</span>
+          </div>
+        </div>
+        <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
+          <div className="h-full rounded-full" style={{ width: `${item.pct}%`, backgroundColor: item.color }} />
+        </div>
+      </div>
+    ))}
+    <p className="text-[10px] text-white/30 font-mono pt-1">WCAG 2.1 · AA = 4.5:1 · AAA = 7:1</p>
+  </div>
+);
+
+const SlideAtomicDesign = () => (
+  <div className="w-full">
+    <div className="flex items-center justify-between gap-1 mb-4">
+      {[
+        { name: "Átomos", icon: "⬡", desc: "Botón, Input, Icon" },
+        { name: "Moléculas", icon: "◈", desc: "Search bar, Card" },
+        { name: "Organismos", icon: "⬡◈", desc: "Navbar, Form" },
+        { name: "Plantillas", icon: "▤", desc: "Page layout" },
+        { name: "Páginas", icon: "🖥", desc: "Home, Dashboard" },
+      ].map((level, i, arr) => (
+        <div key={level.name} className="flex items-center gap-1">
+          <div className="flex flex-col items-center gap-1 text-center">
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-base border border-white/10"
+              style={{ background: `${[ORANGE, PINK, PURPLE, ORANGE, PINK][i]}18` }}
+            >
+              {level.icon}
+            </div>
+            <span className="text-[9px] font-bold tracking-wider text-white/50">{level.name}</span>
+            <span className="text-[8px] text-white/25">{level.desc}</span>
+          </div>
+          {i < arr.length - 1 && <span className="text-white/20 text-lg mb-4">›</span>}
+        </div>
+      ))}
+    </div>
+    <div className="border-t border-white/10 pt-3 flex gap-4">
+      <div className="text-[10px] font-mono text-white/30">
+        <span style={{ color: ORANGE }}>grid:</span> 8px baseline
+      </div>
+      <div className="text-[10px] font-mono text-white/30">
+        <span style={{ color: PINK }}>spacing:</span> 4/8/12/16/24/32px
+      </div>
+      <div className="text-[10px] font-mono text-white/30">
+        <span style={{ color: PURPLE }}>pixel perfect</span> ✓
+      </div>
+    </div>
+  </div>
+);
+
+const showcaseTabs = [
+  {
+    label: "Tokens",
+    title: "Fundamentos del Sistema",
+    description: "Variables de diseño que conectan cada decisión visual con el código — colores, tipografía y espaciado como lenguaje compartido.",
+    accent: `${ORANGE}, ${PINK}`,
+    content: <SlideTokens />,
+  },
+  {
+    label: "Componentes",
+    title: "Librería de Componentes",
+    description: "Átomos reutilizables con variantes, estados y guías — botones, inputs y tarjetas consistentes en todo el producto.",
+    accent: `${PINK}, ${PURPLE}`,
+    content: <SlideComponentes />,
+  },
+  {
+    label: "Patrones",
+    title: "Patrones de Interfaz",
+    description: "Soluciones recurrentes documentadas: navbar, hero, grids de cards, formularios y estados vacíos.",
+    accent: `${PURPLE}, ${ORANGE}`,
+    content: <SlidePatrones />,
+  },
+  {
+    label: "Documentación",
+    title: "Documentación Viva",
+    description: "Cada componente con props, variantes, DO/DON'T y código listo para el handoff — sin fricción entre diseño y desarrollo.",
+    accent: `${ORANGE}, ${PURPLE}`,
+    content: <SlideDocumentacion />,
+  },
+  {
+    label: "Temas",
+    title: "Sistema de Temas",
+    description: "Dark/Light mode gestionado 100% a nivel de token — un cambio en la variable y todo el sistema se actualiza automáticamente.",
+    accent: `${PINK}, ${ORANGE}`,
+    content: <SlideTemas />,
+  },
+  {
+    label: "Accesibilidad",
+    title: "Accesibilidad por Diseño",
+    description: "Contraste WCAG AA verificado en cada token, navegación por teclado y roles ARIA en cada componente del sistema.",
+    accent: `${PURPLE}, ${PINK}`,
+    content: <SlideAccesibilidad />,
+  },
+  {
+    label: "Atomic Design",
+    title: "Arquitectura Modular",
+    description: "Cinco niveles de composición — desde el átomo más simple hasta la página completa — garantizando consistencia y reutilización a escala.",
+    accent: `${ORANGE}, ${PURPLE}`,
+    content: <SlideAtomicDesign />,
+  },
 ];
 
 const DSShowcase = () => {
   const [active, setActive] = useState(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const s = slides[active];
+  const tab = showcaseTabs[active];
 
   return (
     <motion.section
@@ -145,41 +395,48 @@ const DSShowcase = () => {
       transition={{ duration: 0.7 }}
       className="container-portfolio pb-28"
     >
-      <div className="relative rounded-2xl border border-border overflow-hidden min-h-[400px] md:min-h-[480px]">
+      <div className="relative rounded-2xl border border-border overflow-hidden min-h-[420px] md:min-h-[440px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -24 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 p-10 md:p-16 flex flex-col justify-end"
-            style={{ background: `radial-gradient(ellipse at top right, ${s.accent.split(",")[0]}18, transparent 60%)` }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 grid md:grid-cols-2"
+            style={{
+              background: `radial-gradient(ellipse at top right, ${tab.accent.split(",")[0].trim()}14, transparent 55%)`,
+              backgroundImage: `radial-gradient(ellipse at top right, ${tab.accent.split(",")[0].trim()}14, transparent 55%), radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px)`,
+              backgroundSize: "auto, 28px 28px",
+            }}
           >
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px)", backgroundSize: "28px 28px" }}
-            />
-            <div
-              className="absolute top-10 left-10 w-1.5 h-14 rounded-full"
-              style={{ background: `linear-gradient(180deg, ${s.accent})` }}
-            />
-            <div className="relative">
+            {/* Left: text */}
+            <div className="flex flex-col justify-center p-8 md:p-12">
+              <div
+                className="w-1.5 h-10 rounded-full mb-6"
+                style={{ background: `linear-gradient(180deg, ${tab.accent})` }}
+              />
               <span
-                className="text-xs font-bold tracking-[0.2em] uppercase"
-                style={{ background: `linear-gradient(90deg, ${s.accent})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+                className="text-[10px] font-bold tracking-[0.22em] uppercase mb-2"
+                style={{ background: `linear-gradient(90deg, ${tab.accent})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
               >
-                {s.label}
+                {tab.label}
               </span>
-              <h3 className="text-3xl md:text-4xl font-bold mt-2 mb-3">{s.title}</h3>
-              <p className="text-muted-foreground max-w-xl">{s.description}</p>
+              <h3 className="text-2xl md:text-3xl font-bold mb-3 leading-snug">{tab.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{tab.description}</p>
+            </div>
+
+            {/* Right: visual content */}
+            <div className="flex items-center justify-center p-6 md:p-10 border-t md:border-t-0 md:border-l border-border/40">
+              {tab.content}
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
+      {/* Dots */}
       <div className="flex items-center justify-center gap-2 mt-6">
-        {slides.map((_, i) => (
+        {showcaseTabs.map((_, i) => (
           <button
             key={i}
             onClick={() => setActive(i)}
@@ -194,179 +451,19 @@ const DSShowcase = () => {
         ))}
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-6 mt-5">
-        {slides.map((s, i) => (
+      {/* Tab labels */}
+      <div className="flex flex-wrap items-center justify-center gap-5 mt-5">
+        {showcaseTabs.map((t, i) => (
           <button
             key={i}
             onClick={() => setActive(i)}
             className={`text-xs font-medium tracking-wider uppercase transition-colors duration-300 ${i === active ? "text-foreground" : "text-muted-foreground/40 hover:text-muted-foreground"}`}
           >
-            {s.label}
+            {t.label}
           </button>
         ))}
       </div>
     </motion.section>
-  );
-};
-
-// ─────────────────────────────────────────────
-// ATOMIC DESIGN
-// ─────────────────────────────────────────────
-const atomicLevels = [
-  {
-    name: "ÁTOMOS",
-    desc: "Botones, inputs, iconos — los elementos más pequeños e indivisibles.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
-        <circle cx="24" cy="24" r="4" />
-        <ellipse cx="24" cy="24" rx="18" ry="7" />
-        <ellipse cx="24" cy="24" rx="18" ry="7" transform="rotate(60 24 24)" />
-        <ellipse cx="24" cy="24" rx="18" ry="7" transform="rotate(120 24 24)" />
-      </svg>
-    ),
-  },
-  {
-    name: "MOLÉCULAS",
-    desc: "Combinaciones simples: campo de búsqueda, tarjeta de media.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
-        <circle cx="24" cy="14" r="5" />
-        <circle cx="13" cy="33" r="5" />
-        <circle cx="35" cy="33" r="5" />
-        <line x1="24" y1="19" x2="13" y2="28" />
-        <line x1="24" y1="19" x2="35" y2="28" />
-        <line x1="18" y1="33" x2="30" y2="33" />
-      </svg>
-    ),
-  },
-  {
-    name: "ORGANISMOS",
-    desc: "Secciones complejas: navbar, formularios, grids de contenido.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
-        <circle cx="12" cy="12" r="4" /><circle cx="36" cy="12" r="4" />
-        <circle cx="12" cy="36" r="4" /><circle cx="36" cy="36" r="4" />
-        <circle cx="24" cy="24" r="4" />
-        <line x1="16" y1="12" x2="32" y2="12" /><line x1="12" y1="16" x2="12" y2="32" />
-        <line x1="36" y1="16" x2="36" y2="32" /><line x1="16" y1="36" x2="32" y2="36" />
-        <line x1="16" y1="20" x2="24" y2="24" /><line x1="32" y1="20" x2="24" y2="24" />
-        <line x1="16" y1="28" x2="24" y2="24" /><line x1="32" y1="28" x2="24" y2="24" />
-      </svg>
-    ),
-  },
-  {
-    name: "PLANTILLAS",
-    desc: "Estructura de página: layout sin contenido real aún.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
-        <rect x="5" y="5" width="38" height="38" rx="3" />
-        <line x1="5" y1="16" x2="43" y2="16" />
-        <line x1="18" y1="16" x2="18" y2="43" />
-        <rect x="22" y="21" width="16" height="7" rx="1" />
-        <rect x="22" y="32" width="16" height="4" rx="1" />
-      </svg>
-    ),
-  },
-  {
-    name: "PÁGINAS",
-    desc: "Instancias reales con contenido definitivo y contexto final.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
-        <rect x="4" y="6" width="40" height="36" rx="3" />
-        <line x1="4" y1="15" x2="44" y2="15" />
-        <circle cx="10" cy="10.5" r="1.5" fill="currentColor" />
-        <circle cx="16" cy="10.5" r="1.5" fill="currentColor" />
-        <circle cx="22" cy="10.5" r="1.5" fill="currentColor" />
-        <rect x="9" y="20" width="30" height="3" rx="1" />
-        <rect x="9" y="27" width="20" height="2" rx="1" />
-        <rect x="9" y="32" width="26" height="2" rx="1" />
-        <rect x="9" y="37" width="15" height="2" rx="1" />
-      </svg>
-    ),
-  },
-];
-
-const DSAtomicDesign = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section className="container-portfolio pb-28">
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 32 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7 }}
-        className="rounded-2xl border border-border p-10 md:p-16"
-        style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0)", backgroundSize: "30px 30px" }}
-      >
-        <div className="text-center mb-14">
-          <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">METODOLOGÍA</p>
-          <h2 className="text-3xl md:text-4xl font-bold">Atomic Design</h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm leading-relaxed">
-            Arquitectura modular que organiza la interfaz desde sus piezas más simples hasta la página completa — garantizando consistencia y reutilización a escala.
-          </p>
-        </div>
-
-        <div className="flex flex-col md:flex-row items-start justify-center gap-0">
-          {atomicLevels.map((level, i) => (
-            <div key={level.name} className="flex flex-col md:flex-row items-center w-full md:w-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.12, duration: 0.5 }}
-                className="flex flex-col items-center gap-3 px-4 py-4 group cursor-default flex-1 md:flex-none md:w-36 text-center"
-              >
-                <div className="text-muted-foreground/50 group-hover:text-foreground transition-colors duration-300">
-                  {level.icon}
-                </div>
-                <span className="text-[11px] font-bold tracking-[0.15em] text-muted-foreground/60 group-hover:text-foreground transition-colors duration-300">
-                  {level.name}
-                </span>
-                <p className="text-[11px] text-muted-foreground/40 leading-relaxed hidden md:block">
-                  {level.desc}
-                </p>
-              </motion.div>
-              {i < atomicLevels.length - 1 && (
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={inView ? { opacity: 1 } : {}}
-                  transition={{ delay: i * 0.12 + 0.25 }}
-                  className="text-muted-foreground/20 text-2xl rotate-90 md:rotate-0 my-1 md:my-0 md:mb-14"
-                >
-                  ›
-                </motion.span>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Pixel Perfect badge */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-center gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }} />
-            <span className="text-xs tracking-widest text-muted-foreground uppercase">METODOLOGÍA</span>
-            <span className="text-muted-foreground/30">/</span>
-            <span className="text-xs font-medium text-muted-foreground">Atomic Design + Pixel Perfect</span>
-          </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border">
-            <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3" stroke="currentColor" strokeWidth="1.5">
-              <rect x="1" y="1" width="6" height="6" rx="0.5" />
-              <rect x="9" y="1" width="6" height="6" rx="0.5" />
-              <rect x="1" y="9" width="6" height="6" rx="0.5" />
-              <rect x="9" y="9" width="6" height="6" rx="0.5" />
-            </svg>
-            <span className="text-[10px] font-mono text-muted-foreground/60">grid: 8px baseline</span>
-          </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border">
-            <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3" stroke="currentColor" strokeWidth="1.5">
-              <path d="M8 1v14M1 8h14" />
-            </svg>
-            <span className="text-[10px] font-mono text-muted-foreground/60">spacing: 4/8/12/16/24/32</span>
-          </div>
-        </div>
-      </motion.div>
-    </section>
   );
 };
 
@@ -1049,7 +1146,6 @@ const DesignSystemPage = () => (
     <main>
       <DSHero />
       <DSShowcase />
-      <DSAtomicDesign />
       <DSOverview />
       <DSChallenge />
       <DSSolution />
