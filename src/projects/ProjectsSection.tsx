@@ -238,7 +238,7 @@ const ProjectModal = ({ project, onClose }: ModalProps) => {
                   style={{
                     background:
                       "linear-gradient(90deg, #F75010, #DB1E3F, #D00952, #920087, #6E00A3)",
-                    boxShadow: "0 4px 24px 0 rgba(247,80,16,0.25)",
+                    boxShadow: "0 4px 24px 0 rgba(247,80,16,0.35)",
                   }}
                 >
                   {/* Icono Behance */}

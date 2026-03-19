@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import SEOHead from "@/components/SEOHead";
 
 // ─────────────────────────────────────────────
 // BRAND COLORS
@@ -1718,11 +1718,23 @@ const DSCallToAction = () => {
 // ─────────────────────────────────────────────
 const DesignSystemPage = () => (
   <>
-    <Helmet>
-      <title>Design System — Zeraus DS</title>
-      <meta name="description" content="Sistema de diseño escalable — tokens, componentes y patrones para productos digitales." />
-      <meta name="robots" content="noindex, nofollow" />
-    </Helmet>
+    <SEOHead
+      title="Design System — Cristian Suarez · Zeraus DS"
+      description="Caso de estudio: sistema de diseño construido desde cero para Auditbrain — arquitectura de tokens, librería de componentes, documentación viva y adopción en 4 módulos de producto."
+      url="https://zerausds.com/design-system-v2"
+      keywords={[
+        "Design System",
+        "Design Tokens",
+        "Figma Variables",
+        "Atomic Design",
+        "Storybook",
+        "UI Lead",
+        "Component Library",
+        "UX Design",
+        "Auditbrain",
+        "Cristian Suarez",
+      ]}
+    />
     <main>
       <DSHero />
       <DSShowcase />
