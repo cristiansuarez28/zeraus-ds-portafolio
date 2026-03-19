@@ -69,20 +69,20 @@ const CircularProgress = ({
 // HERO
 // ─────────────────────────────────────────────
 const DSHero = () => (
-  <section className="container-portfolio pt-32 pb-24">
+  <section className="container-portfolio pt-28 md:pt-32 pb-20 md:pb-24">
     <motion.div
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       style={{ originX: 0, background: `linear-gradient(90deg, ${ORANGE}, ${PINK}, ${PURPLE})` }}
-      className="h-px w-24 mb-10"
+      className="h-px w-24 mb-8 md:mb-10"
     />
 
     <motion.h1
       initial={{ opacity: 0, y: 32 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.1 }}
-      className="text-6xl md:text-8xl font-bold leading-tight mb-6"
+      className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight mb-5 md:mb-6"
     >
       Design{" "}
       <span style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK}, ${PURPLE})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
@@ -94,25 +94,57 @@ const DSHero = () => (
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.2 }}
-      className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-16"
+      className="text-lg md:text-2xl text-muted-foreground max-w-2xl mb-10 md:mb-14"
     >
       Creando experiencias unificadas en ecosistemas de producto complejos — sistemas que escalan sin caos.
     </motion.p>
 
+    {/* Methodology badges */}
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.35 }}
-      className="grid grid-cols-3 gap-8 pt-8 border-t border-border max-w-md"
+      transition={{ duration: 0.6, delay: 0.3 }}
+      className="flex flex-wrap gap-2 mb-10 md:mb-12"
     >
       {[
-        { label: "ROL", value: "Design Systems Lead" },
-        { label: "EXPERIENCIA", value: "5+ años" },
-        { label: "PRODUCTOS", value: "6+ empresas" },
+        { label: "Atomic Design", color: ORANGE },
+        { label: "Pixel Perfect", color: PINK },
+        { label: "Token-first", color: PURPLE },
+        { label: "WCAG AA", color: ORANGE },
+        { label: "Figma Variables", color: PINK },
+        { label: "Style Dictionary", color: PURPLE },
+      ].map((badge) => (
+        <span
+          key={badge.label}
+          className="text-[11px] font-medium px-3 py-1.5 rounded-full border"
+          style={{ color: badge.color, borderColor: `${badge.color}40`, background: `${badge.color}0D` }}
+        >
+          {badge.label}
+        </span>
+      ))}
+    </motion.div>
+
+    {/* Impact numbers */}
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.45 }}
+      className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-border"
+    >
+      {[
+        { num: "200+", label: "Componentes\ndocumentados" },
+        { num: "500+", label: "Tokens\ndefinidos" },
+        { num: "40%", label: "Reducción en\ntiempo de handoff" },
+        { num: "6+", label: "Empresas\nimpactadas" },
       ].map((item) => (
-        <div key={item.label}>
-          <p className="text-[10px] tracking-[0.18em] text-muted-foreground mb-1">{item.label}</p>
-          <p className="font-semibold text-sm">{item.value}</p>
+        <div key={item.num}>
+          <p
+            className="text-3xl md:text-4xl font-bold mb-1"
+            style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+          >
+            {item.num}
+          </p>
+          <p className="text-xs text-muted-foreground leading-snug whitespace-pre-line">{item.label}</p>
         </div>
       ))}
     </motion.div>
@@ -292,39 +324,40 @@ const SlideAccesibilidad = () => (
 
 const SlideAtomicDesign = () => (
   <div className="w-full">
-    <div className="flex items-center justify-between gap-1 mb-4">
+    {/* Mobile: 2-col grid. Desktop: single row */}
+    <div className="grid grid-cols-3 md:flex md:items-center md:justify-between gap-3 mb-4">
       {[
-        { name: "Átomos", icon: "⬡", desc: "Botón, Input, Icon" },
-        { name: "Moléculas", icon: "◈", desc: "Search bar, Card" },
-        { name: "Organismos", icon: "⬡◈", desc: "Navbar, Form" },
-        { name: "Plantillas", icon: "▤", desc: "Page layout" },
-        { name: "Páginas", icon: "🖥", desc: "Home, Dashboard" },
+        { name: "Átomos", desc: "Botón, Input", colors: [ORANGE, PINK] },
+        { name: "Moléculas", desc: "Search, Card", colors: [PINK, PURPLE] },
+        { name: "Organismos", desc: "Navbar, Form", colors: [PURPLE, ORANGE] },
+        { name: "Plantillas", desc: "Page layout", colors: [ORANGE, PINK] },
+        { name: "Páginas", desc: "Home, Dashboard", colors: [PINK, PURPLE] },
       ].map((level, i, arr) => (
-        <div key={level.name} className="flex items-center gap-1">
-          <div className="flex flex-col items-center gap-1 text-center">
+        <div key={level.name} className="flex md:flex-row items-center gap-1.5">
+          <div className="flex flex-col items-center gap-1.5 text-center">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-base border border-white/10"
-              style={{ background: `${[ORANGE, PINK, PURPLE, ORANGE, PINK][i]}18` }}
+              className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 text-xs font-bold"
+              style={{ background: `linear-gradient(135deg, ${level.colors[0]}20, ${level.colors[1]}20)`, color: level.colors[0] }}
             >
-              {level.icon}
+              {i + 1}
             </div>
-            <span className="text-[9px] font-bold tracking-wider text-white/50">{level.name}</span>
-            <span className="text-[8px] text-white/25">{level.desc}</span>
+            <span className="text-[9px] font-bold tracking-wider text-white/60">{level.name}</span>
+            <span className="text-[8px] text-white/25 hidden md:block">{level.desc}</span>
           </div>
-          {i < arr.length - 1 && <span className="text-white/20 text-lg mb-4">›</span>}
+          {i < arr.length - 1 && <span className="text-white/15 text-lg hidden md:block">›</span>}
         </div>
       ))}
     </div>
-    <div className="border-t border-white/10 pt-3 flex gap-4">
-      <div className="text-[10px] font-mono text-white/30">
-        <span style={{ color: ORANGE }}>grid:</span> 8px baseline
-      </div>
-      <div className="text-[10px] font-mono text-white/30">
-        <span style={{ color: PINK }}>spacing:</span> 4/8/12/16/24/32px
-      </div>
-      <div className="text-[10px] font-mono text-white/30">
-        <span style={{ color: PURPLE }}>pixel perfect</span> ✓
-      </div>
+    <div className="border-t border-white/10 pt-3 flex flex-wrap gap-3">
+      {[
+        { label: "grid", val: "8px", color: ORANGE },
+        { label: "spacing", val: "4/8/16/24px", color: PINK },
+        { label: "pixel perfect", val: "✓", color: PURPLE },
+      ].map((t) => (
+        <div key={t.label} className="text-[10px] font-mono text-white/30">
+          <span style={{ color: t.color }}>{t.label}:</span> {t.val}
+        </div>
+      ))}
     </div>
   </div>
 );
@@ -395,25 +428,24 @@ const DSShowcase = () => {
       transition={{ duration: 0.7 }}
       className="container-portfolio pb-28"
     >
-      <div className="relative rounded-2xl border border-border overflow-hidden min-h-[420px] md:min-h-[440px]">
+      <div className="rounded-2xl border border-border overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -24 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 grid md:grid-cols-2"
+            exit={{ opacity: 0, x: -16 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="grid md:grid-cols-2"
             style={{
-              background: `radial-gradient(ellipse at top right, ${tab.accent.split(",")[0].trim()}14, transparent 55%)`,
               backgroundImage: `radial-gradient(ellipse at top right, ${tab.accent.split(",")[0].trim()}14, transparent 55%), radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px)`,
               backgroundSize: "auto, 28px 28px",
             }}
           >
             {/* Left: text */}
-            <div className="flex flex-col justify-center p-8 md:p-12">
+            <div className="flex flex-col justify-center p-7 md:p-12">
               <div
-                className="w-1.5 h-10 rounded-full mb-6"
+                className="w-1.5 h-8 rounded-full mb-5"
                 style={{ background: `linear-gradient(180deg, ${tab.accent})` }}
               />
               <span
@@ -422,12 +454,12 @@ const DSShowcase = () => {
               >
                 {tab.label}
               </span>
-              <h3 className="text-2xl md:text-3xl font-bold mb-3 leading-snug">{tab.title}</h3>
+              <h3 className="text-xl md:text-3xl font-bold mb-3 leading-snug">{tab.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{tab.description}</p>
             </div>
 
             {/* Right: visual content */}
-            <div className="flex items-center justify-center p-6 md:p-10 border-t md:border-t-0 md:border-l border-border/40">
+            <div className="flex items-center justify-center p-5 md:p-10 border-t md:border-t-0 md:border-l border-border/40 min-h-[220px]">
               {tab.content}
             </div>
           </motion.div>
@@ -480,7 +512,7 @@ const DSOverview = () => {
         initial={{ opacity: 0, y: 24 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="grid md:grid-cols-2 gap-16 items-start"
+        className="grid md:grid-cols-2 gap-10 md:gap-16 items-start"
       >
         <div>
           <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>OVERVIEW</p>
@@ -751,19 +783,36 @@ const DSFoundations = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: i * 0.05 }}
-                      className="grid grid-cols-12 px-6 py-3 text-xs font-mono hover:bg-muted/5 transition-colors"
+                      className="px-4 md:px-6 py-3 text-xs font-mono hover:bg-muted/5 transition-colors"
                     >
-                      <span className="col-span-3 text-muted-foreground/40">{token.collection}</span>
-                      <span className="col-span-5 text-muted-foreground">{token.name}</span>
-                      <span className="col-span-3" style={{ color: typeColor[token.type] || ORANGE }}>{token.value}</span>
-                      <span className="col-span-1 text-right">
+                      {/* Mobile: stacked */}
+                      <div className="flex items-start justify-between gap-2 md:hidden">
+                        <div className="min-w-0">
+                          <p className="text-muted-foreground/40 text-[10px] mb-0.5">{token.collection}</p>
+                          <p className="text-muted-foreground truncate">{token.name}</p>
+                          <p className="mt-0.5" style={{ color: typeColor[token.type] || ORANGE }}>{token.value}</p>
+                        </div>
                         <span
-                          className="px-1.5 py-0.5 rounded text-[9px] tracking-wider"
+                          className="shrink-0 px-1.5 py-0.5 rounded text-[9px] tracking-wider"
                           style={{ color: typeColor[token.type], background: `${typeColor[token.type]}15` }}
                         >
                           {token.type}
                         </span>
-                      </span>
+                      </div>
+                      {/* Desktop: row */}
+                      <div className="hidden md:grid grid-cols-12">
+                        <span className="col-span-3 text-muted-foreground/40">{token.collection}</span>
+                        <span className="col-span-4 text-muted-foreground">{token.name}</span>
+                        <span className="col-span-4" style={{ color: typeColor[token.type] || ORANGE }}>{token.value}</span>
+                        <span className="col-span-1 text-right">
+                          <span
+                            className="px-1.5 py-0.5 rounded text-[9px] tracking-wider"
+                            style={{ color: typeColor[token.type], background: `${typeColor[token.type]}15` }}
+                          >
+                            {token.type}
+                          </span>
+                        </span>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -1106,7 +1155,7 @@ const DSImpact = () => {
           El sistema transformó cómo los equipos construyen y escalan — resultados medibles en eficiencia, consistencia y calidad.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-16 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-16 mb-12 md:mb-16">
           <CircularProgress value={40} description="Reducción en tiempo de diseño a desarrollo" uid="m1" />
           <CircularProgress value={80} description="Menos reprocesos por inconsistencias visuales" uid="m2" />
           <CircularProgress value={90} description="Adopción del sistema por los equipos de producto" uid="m3" />
