@@ -577,10 +577,10 @@ const DSChallenge = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const challenges = [
-    { num: "01", title: "Fragmentación visual", desc: "Cada equipo construía componentes desde cero. El mismo botón tenía 12 variantes distintas distribuidas en el producto." },
-    { num: "02", title: "Deuda de diseño acumulada", desc: "Sin una fuente de verdad, las inconsistencias crecían con cada sprint. El handoff era lento, manual y propenso a errores." },
-    { num: "03", title: "Escala sin estructura", desc: "Al incorporar nuevos diseñadores o desarrolladores, no existía documentación clara. El onboarding tomaba semanas y dependía del conocimiento tribal." },
-    { num: "04", title: "Dark/Light mode sin tokens", desc: "Cambiar temas requería intervención manual en cientos de archivos. No había un sistema de variables que propagara el cambio automáticamente." },
+    { num: "01", title: "4 módulos, 4 identidades visuales", desc: "Auditbrain tenía 4 módulos principales — Auditoría, Reportes, Dashboard y Configuración — cada uno con estilos distintos. Mismo producto, cuatro universos visuales sin relación." },
+    { num: "02", title: "Handoff de 2 semanas por feature", desc: "Sin tokens ni fuente de verdad, cada sprint generaba nuevas inconsistencias. Diseño entregaba specs, desarrollo interpretaba a su criterio. El ciclo completo tomaba hasta 2 semanas por feature nuevo." },
+    { num: "03", title: "Conocimiento tribal, cero documentación", desc: "Cada módulo de Auditbrain acumulaba decisiones de UI no documentadas. El onboarding de un nuevo developer requería leer el código completo de cada módulo para entender los patrones." },
+    { num: "04", title: "Temas sin abstracción de tokens", desc: "Implementar Dark Mode en los 4 módulos requería modificar cientos de archivos CSS manualmente. No existía ninguna capa de abstracción entre el valor de color y el código." },
   ];
 
   return (
@@ -625,36 +625,36 @@ const DSSolution = () => {
       title: "Foundation & Standards",
       color: ORANGE,
       points: [
-        "Sistema de tokens con CSS custom properties + Figma Variables sincronizadas",
-        "Escala tipográfica y de espaciado basada en grid de 8px (Pixel Perfect)",
-        "Paleta semántica: primitivos → semánticos → componente",
+        "Arquitectura de tokens unificada para los 4 módulos de Auditbrain — CSS custom properties sincronizadas con Figma Variables",
+        "Escala tipográfica y de espaciado basada en grid de 8px aplicada consistentemente en Auditoría, Reportes, Dashboard y Configuración",
+        "Paleta semántica de 3 capas: primitivos → semánticos → componente — un cambio propaga a todo el sistema",
       ],
     },
     {
       title: "Accesibilidad",
       color: PINK,
       points: [
-        "Contraste WCAG AA verificado en cada token de color",
-        "Navegación por teclado y roles ARIA en cada componente",
-        "Estados: hover, focus, active, disabled, error — documentados y probados",
+        "Contraste WCAG AA verificado en cada token de color del sistema de Auditbrain",
+        "Navegación por teclado y roles ARIA en cada componente — requerimiento de los clientes enterprise del producto",
+        "Estados: hover, focus, active, disabled, error — documentados, probados y parte del handoff",
       ],
     },
     {
-      title: "Cross-Platform Consistency",
+      title: "Cross-Module Consistency",
       color: PURPLE,
       points: [
-        "Tokens compartidos entre web (CSS), React Native y documentación",
-        "Variables de Figma conectadas al repositorio vía Style Dictionary",
-        "Dark/Light mode gestionado 100% a nivel de token — cero overrides manuales",
+        "Un único Design System alimentando los 4 módulos del producto — cero duplicación de trabajo entre módulos",
+        "Variables de Figma conectadas al repositorio de Auditbrain vía Style Dictionary — tokens como fuente de verdad",
+        "Dark/Light mode implementado en todo el producto con un único cambio de token — eliminando 200+ overrides manuales",
       ],
     },
     {
-      title: "Organizational Buy-In",
+      title: "Adoption & Governance",
       color: ORANGE,
       points: [
-        "Workshops de adopción con diseñadores y desarrolladores",
-        "Documentación viva en Storybook + Notion como fuente de verdad",
-        "Versionado semántico (major.minor.patch) con changelog por componente",
+        "Workshops de adopción con los 4 squads de desarrollo de Auditbrain — de 0% a 90% de adopción en 6 meses",
+        "Documentación viva en Storybook + Notion: cada componente con versión, estado y guía de uso",
+        "Versionado semántico (major.minor.patch) con changelog — cada release del sistema comunicado al equipo completo",
       ],
     },
   ];
@@ -797,6 +797,28 @@ const DSFoundations = () => {
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3 }}
             >
+              {/* Token naming convention flow */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 mb-6">
+                {[
+                  { label: "Primitivos", desc: "color/orange/500 → #FF6B2B", color: ORANGE, note: "Valor concreto" },
+                  { label: "Semánticos", desc: "color/brand/primary → ↳ color/orange/500", color: PINK, note: "Alias con significado" },
+                  { label: "Componente", desc: "button/color/bg → ↳ color/brand/primary", color: PURPLE, note: "Uso específico" },
+                ].map((layer, i, arr) => (
+                  <div key={layer.label} className="flex sm:flex-row items-center gap-2 flex-1">
+                    <div
+                      className="flex-1 rounded-xl border p-4"
+                      style={{ borderColor: `${layer.color}30`, background: `${layer.color}08` }}
+                    >
+                      <p className="text-[10px] font-bold tracking-wider uppercase mb-1" style={{ color: layer.color }}>{layer.label}</p>
+                      <p className="text-[10px] font-mono text-muted-foreground leading-snug">{layer.desc}</p>
+                      <p className="text-[9px] text-muted-foreground/40 mt-1.5">{layer.note}</p>
+                    </div>
+                    {i < arr.length - 1 && (
+                      <span className="text-xl text-muted-foreground/30 shrink-0 sm:block hidden">›</span>
+                    )}
+                  </div>
+                ))}
+              </div>
               <div className="rounded-2xl border border-border overflow-hidden">
                 <div className="border-b border-border px-6 py-3 flex items-center gap-3 bg-muted/5">
                   <div className="w-3 h-3 rounded-full bg-red-400/60" />
@@ -1061,6 +1083,25 @@ const DSDocumentation = () => {
               </div>
             </div>
           </div>
+
+          {/* Token → Component connection */}
+          <div className="border-t border-border px-8 py-6">
+            <p className="text-xs tracking-widest uppercase text-muted-foreground mb-4">TOKENS USADOS POR ESTE COMPONENTE</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                { token: "--ds-color-primary", use: "background (primary)", color: ORANGE },
+                { token: "--ds-color-secondary", use: "border (secondary)", color: PINK },
+                { token: "--ds-radius-lg", use: "border-radius", color: PURPLE },
+                { token: "--ds-spacing-component-md", use: "padding x/y", color: ORANGE },
+              ].map(({ token, use, color }) => (
+                <div key={token} className="rounded-lg border border-border p-3" style={{ background: `${color}06` }}>
+                  <p className="text-[10px] font-mono font-bold mb-1" style={{ color }}>{token}</p>
+                  <p className="text-[10px] text-muted-foreground/60">→ {use}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-[10px] font-mono text-muted-foreground/40 mt-3">Cada cambio en el token propaga automáticamente a todos los botones del sistema.</p>
+          </div>
         </div>
       </motion.div>
     </section>
@@ -1175,6 +1216,49 @@ const DSProcess = () => {
             );
           })}
         </div>
+
+        {/* Mini roadmap */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="mt-10 rounded-2xl border border-border p-6 md:p-8"
+        >
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: PURPLE }}>ROADMAP DEL SISTEMA</p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { quarter: "Q1 · 2023", label: "Foundations", status: "done", items: ["Color tokens", "Tipografía", "Espaciado", "Grid 8px"] },
+              { quarter: "Q2 · 2023", label: "Core Components", status: "done", items: ["Button, Input, Card", "Form patterns", "Storybook setup", "Accesibilidad base"] },
+              { quarter: "Q3–Q4 · 2023", label: "Scale & Adoption", status: "done", items: ["Dark Mode tokens", "Multi-módulo sync", "Style Dictionary", "Workshops equipo"] },
+              { quarter: "2024+", label: "Evolution", status: "ongoing", items: ["Mobile tokens", "Nuevos módulos", "Automated testing", "Changelog público"] },
+            ].map((phase) => (
+              <div
+                key={phase.quarter}
+                className="rounded-xl border border-border p-4"
+                style={phase.status === "ongoing" ? { borderColor: `${ORANGE}40`, background: `${ORANGE}06` } : {}}
+              >
+                <p className="text-[10px] font-mono text-muted-foreground/50 mb-1">{phase.quarter}</p>
+                <div className="flex items-center gap-2 mb-3">
+                  <span
+                    className="w-1.5 h-1.5 rounded-full shrink-0"
+                    style={{ background: phase.status === "ongoing" ? ORANGE : "#16A34A" }}
+                  />
+                  <p className="text-xs font-bold">{phase.label}</p>
+                </div>
+                <ul className="space-y-1">
+                  {phase.items.map((item) => (
+                    <li key={item} className="text-[10px] text-muted-foreground/60 flex items-center gap-1.5">
+                      <span style={{ color: phase.status === "ongoing" ? ORANGE : "#16A34A" }}>
+                        {phase.status === "ongoing" ? "›" : "✓"}
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
@@ -1188,11 +1272,11 @@ const DSImpact = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const outcomes = [
-    "Experiencia visual unificada en todos los productos digitales",
-    "Reducción del 80% en la recreación de componentes duplicados",
-    "Handoff de diseño a desarrollo sin fricción ni reprocesos",
-    "Gobernanza establecida con versionado semántico y changelog",
-    "Onboarding de nuevos diseñadores en días, no semanas",
+    "4 módulos de Auditbrain (Auditoría, Reportes, Dashboard, Configuración) unificados bajo un único sistema",
+    "Handoff de 2 semanas reducido a 3 días — sin fricción ni reprocesos entre diseño y desarrollo",
+    "Dark Mode implementado en todo el producto con un único cambio de token CSS — eliminando 200+ overrides manuales",
+    "Gobernanza establecida: versionado semántico, changelog y proceso de contribución para nuevos componentes",
+    "Onboarding de nuevos developers de 3 semanas a 3 días gracias a la documentación viva en Storybook",
   ];
 
   return (
@@ -1201,17 +1285,17 @@ const DSImpact = () => {
         <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>IMPACTO</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Results & Impact</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-16">
-          El sistema transformó cómo los equipos construyen y escalan — resultados medibles en eficiencia, consistencia y calidad.
+          2 años construyendo el sistema de diseño de Auditbrain — resultados medibles en eficiencia, consistencia y adopción.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-16 mb-12 md:mb-16">
-          <CircularProgress value={40} description="Reducción en tiempo de diseño a desarrollo" uid="m1" />
-          <CircularProgress value={80} description="Menos reprocesos por inconsistencias visuales" uid="m2" />
-          <CircularProgress value={90} description="Adopción del sistema por los equipos de producto" uid="m3" />
+          <CircularProgress value={75} description="Reducción en tiempo de handoff — de 2 semanas a 3 días en Auditbrain" uid="m1" />
+          <CircularProgress value={80} description="Menos reprocesos por inconsistencias en los 4 módulos del producto" uid="m2" />
+          <CircularProgress value={90} description="Adopción del Design System por los equipos de producto de Auditbrain" uid="m3" />
         </div>
 
         <div className="rounded-2xl border border-border p-8">
-          <h3 className="font-bold mb-6">Additional Outcomes</h3>
+          <h3 className="font-bold mb-6">Resultados Concretos</h3>
           <ul className="space-y-4">
             {outcomes.map((o) => (
               <li key={o} className="flex items-start gap-3 text-muted-foreground">
