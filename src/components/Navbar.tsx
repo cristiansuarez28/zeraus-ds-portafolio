@@ -13,6 +13,8 @@ const navLinks = [
   { label: "Contacto",   to: "/contacto" },
 ];
 
+const DS_ROUTE = "/design-system-v2";
+
 const Navbar = () => {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
@@ -21,7 +23,6 @@ const Navbar = () => {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 10);
-      if (window.scrollY > 10) setMenuOpen(false);
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -68,6 +69,18 @@ const Navbar = () => {
                 </TransitionLink>
               ))}
             </div>
+
+            {/* Design System CTA — desktop only */}
+            <TransitionLink
+              to={DS_ROUTE}
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold text-white transition-opacity duration-200 hover:opacity-85"
+              style={{ background: "linear-gradient(90deg, #FF6B2B, #E91E8C)" }}
+            >
+              Design System
+              <svg viewBox="0 0 10 10" fill="none" className="w-2.5 h-2.5" stroke="currentColor" strokeWidth="1.8">
+                <path d="M2 8L8 2M8 2H4.5M8 2v3.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </TransitionLink>
 
             {/* Theme toggle */}
             <button
@@ -133,13 +146,35 @@ const Navbar = () => {
                       onClick={() => setMenuOpen(false)}
                       className="flex items-center h-12 text-base font-medium
                                  text-foreground hover:text-primary
-                                 border-b border-border/40 last:border-0
+                                 border-b border-border/40
                                  transition-colors duration-200"
                     >
                       {link.label}
                     </TransitionLink>
                   </motion.div>
                 ))}
+
+                {/* Design System — mobile */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navLinks.length * 0.06, duration: 0.2 }}
+                >
+                  <TransitionLink
+                    to={DS_ROUTE}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-between h-12 text-base font-semibold transition-colors duration-200"
+                    style={{ color: "#FF6B2B" }}
+                  >
+                    <span>Design System</span>
+                    <span
+                      className="text-[9px] font-bold px-2 py-0.5 rounded-full text-white"
+                      style={{ background: "linear-gradient(90deg, #FF6B2B, #E91E8C)" }}
+                    >
+                      DS
+                    </span>
+                  </TransitionLink>
+                </motion.div>
               </nav>
             </motion.div>
           </>
