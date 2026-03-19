@@ -169,6 +169,16 @@ const DSHero = () => (
 );
 
 // ─────────────────────────────────────────────
+// GRADIENT DIVIDER
+// ─────────────────────────────────────────────
+const GradientDivider = () => (
+  <div
+    className="w-full h-px my-2"
+    style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK}, ${PURPLE})` }}
+  />
+);
+
+// ─────────────────────────────────────────────
 // SHOWCASE CAROUSEL — visual content per tab
 // ─────────────────────────────────────────────
 
@@ -692,14 +702,14 @@ const DSSolution = () => {
 // FOUNDATIONS
 // ─────────────────────────────────────────────
 const colorTokens = [
-  { name: "--ds-color-brand", hex: "#1A56DB", label: "Brand" },
-  { name: "--ds-color-success", hex: "#057A55", label: "Success" },
-  { name: "--ds-color-warning", hex: "#C27803", label: "Warning" },
-  { name: "--ds-color-error", hex: "#C81E1E", label: "Error" },
-  { name: "--ds-neutral-950", hex: "#0D0D0D", label: "Neutral 950" },
-  { name: "--ds-neutral-700", hex: "#374151", label: "Neutral 700" },
-  { name: "--ds-neutral-400", hex: "#9CA3AF", label: "Neutral 400" },
-  { name: "--ds-neutral-50", hex: "#F9FAFB", label: "Neutral 50" },
+  { name: "--ds-color-primary", hex: ORANGE, label: "Primary" },
+  { name: "--ds-color-secondary", hex: PINK, label: "Secondary" },
+  { name: "--ds-color-tertiary", hex: PURPLE, label: "Tertiary" },
+  { name: "--ds-color-success", hex: "#16A34A", label: "Success" },
+  { name: "--ds-color-error", hex: "#DC2626", label: "Error" },
+  { name: "--ds-neutral-950", hex: "#0A0A0A", label: "Neutral 950" },
+  { name: "--ds-neutral-600", hex: "#525252", label: "Neutral 600" },
+  { name: "--ds-neutral-50", hex: "#F5F5F5", label: "Neutral 50" },
 ];
 
 const figmaTokens = [
@@ -1625,14 +1635,17 @@ const DesignSystemPage = () => (
     <main>
       <DSHero />
       <DSShowcase />
+      <GradientDivider />
       <DSOverview />
       <DSChallenge />
       <DSBeforeAfter />
       <DSSolution />
+      <GradientDivider />
       <DSFoundations />
       <DSComponents />
       <DSDocumentation />
       <DSStack />
+      <GradientDivider />
       <DSProcess />
       <DSImpact />
       <DSCallToAction />
