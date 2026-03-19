@@ -38,7 +38,7 @@ const AppContent = () => {
         <Route path="/proyectos" element={<Proyectos />} />
         <Route path="/sobre-mi" element={<SobreMi />} />
         <Route path="/contacto" element={<Contacto />} />
-        <Route path="/design-system-v2" element={<DesignSystem />} />
+        <Route path="/designsystempro" element={<DesignSystem />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
