@@ -98,20 +98,12 @@ const DSHero = () => (
       transition={{ duration: 0.6, delay: 0.3 }}
       className="flex flex-wrap gap-2 mb-10 md:mb-12"
     >
-      {[
-        { label: "Atomic Design", color: ORANGE },
-        { label: "Pixel Perfect", color: PINK },
-        { label: "Token-first", color: PURPLE },
-        { label: "WCAG AA", color: ORANGE },
-        { label: "Figma Variables", color: PINK },
-        { label: "Style Dictionary", color: PURPLE },
-      ].map((badge) => (
+      {["Atomic Design", "Pixel Perfect", "Token-first", "WCAG AA", "Figma Variables", "Style Dictionary"].map((badge) => (
         <span
-          key={badge.label}
-          className="text-[11px] font-medium px-3 py-1.5 rounded-full border"
-          style={{ color: badge.color, borderColor: `${badge.color}40`, background: `${badge.color}0D` }}
+          key={badge}
+          className="text-[11px] font-medium px-3 py-1.5 rounded-full border border-border bg-muted/40 text-muted-foreground"
         >
-          {badge.label}
+          {badge}
         </span>
       ))}
     </motion.div>
@@ -125,8 +117,7 @@ const DSHero = () => (
     >
       <span className="text-[11px] font-mono text-muted-foreground/50">Caso de estudio principal →</span>
       <span
-        className="text-[11px] font-semibold px-3 py-1 rounded-full border"
-        style={{ color: ORANGE, borderColor: `${ORANGE}40`, background: `${ORANGE}0D` }}
+        className="text-[11px] font-semibold px-3 py-1 rounded-full border border-border bg-muted/40 text-foreground"
       >
         Auditbrain
       </span>
@@ -162,10 +153,7 @@ const DSHero = () => (
         { num: "2 años", label: "Construcción\ndesde cero" },
       ].map((item) => (
         <div key={item.num}>
-          <p
-            className="text-3xl md:text-4xl font-bold mb-1"
-            style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
-          >
+          <p className="text-3xl md:text-4xl font-bold mb-1 text-foreground">
             {item.num}
           </p>
           <p className="text-xs text-muted-foreground leading-snug whitespace-pre-line">{item.label}</p>
@@ -556,7 +544,7 @@ const DSOverview = () => {
         className="grid md:grid-cols-2 gap-10 md:gap-16 items-start"
       >
         <div>
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>OVERVIEW</p>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">OVERVIEW</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">El Sistema detrás de Auditbrain</h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
             Auditbrain es una suite de productos de auditoría empresarial. Cuando llegué, cada módulo tenía su propio estilo visual — sin tokens, sin componentes compartidos, sin documentación. El equipo de desarrollo duplicaba trabajo en cada sprint.
@@ -601,7 +589,7 @@ const DSChallenge = () => {
   return (
     <section ref={ref} className="container-portfolio pb-28">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: PINK }}>THE CHALLENGE</p>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">THE CHALLENGE</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Los Problemas a Resolver</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-12">
           Construir un Design System no es solo crear componentes bonitos — es resolver problemas organizacionales y técnicos profundos.
@@ -677,7 +665,7 @@ const DSSolution = () => {
   return (
     <section ref={ref} className="container-portfolio pb-28">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: PURPLE }}>THE SOLUTION</p>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">THE SOLUTION</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Cómo lo Resolvimos</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-12">
           Un sistema con cuatro pilares que ataca los problemas desde la base — tokens, accesibilidad, consistencia entre plataformas y adopción organizacional.
@@ -765,7 +753,7 @@ const DSFoundations = () => {
   return (
     <section ref={ref} className="container-portfolio pb-28">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>FUNDAMENTOS</p>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">FUNDAMENTOS</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Tokens del Sistema</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-10">
           La capa más profunda — variables que conectan las decisiones de diseño con el código de forma trazable y escalable.
@@ -944,7 +932,7 @@ const DSComponents = () => {
   return (
     <section ref={ref} className="container-portfolio pb-28">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>COMPONENTES</p>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">COMPONENTES</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Librería de Componentes</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-12">
           Cada componente documentado con variantes, estados y guías de uso — listo para diseñadores y desarrolladores.
@@ -1046,7 +1034,7 @@ const DSDocumentation = () => {
   return (
     <section ref={ref} className="container-portfolio pb-28">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>DOCUMENTACIÓN</p>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">DOCUMENTACIÓN</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Estilo de Documentación</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-12">
           Estructura estandarizada para garantizar claridad entre diseño y desarrollo — sin fricción en el handoff.
@@ -1165,7 +1153,7 @@ const DSProcess = () => {
   return (
     <section ref={ref} className="container-portfolio pb-28">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>PROCESO</p>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">PROCESO</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Design Process</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-10">
           Cuatro fases que transforman el caos visual en un sistema coherente, mantenible y adoptado por el equipo completo.
@@ -1216,8 +1204,7 @@ const DSProcess = () => {
                           {step.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="text-[10px] font-medium px-2.5 py-1 rounded-full"
-                              style={{ color: step.color, background: `${step.color}15` }}
+                              className="text-xs font-medium px-3 py-1 rounded-full border border-border bg-muted/40 text-muted-foreground"
                             >
                               {tag}
                             </span>
@@ -1239,7 +1226,7 @@ const DSProcess = () => {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="mt-10 rounded-2xl border border-border p-6 md:p-8"
         >
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: PURPLE }}>ROADMAP DEL SISTEMA</p>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-5 text-muted-foreground/60">ROADMAP DEL SISTEMA</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { quarter: "Q1 · 2023", label: "Foundations", status: "done", items: ["Color tokens", "Tipografía", "Espaciado", "Grid 8px"] },
@@ -1297,7 +1284,7 @@ const DSImpact = () => {
   return (
     <section ref={ref} className="container-portfolio pb-32">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>IMPACTO</p>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">IMPACTO</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Results & Impact</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-16">
           2 años construyendo el sistema de diseño de Auditbrain — resultados medibles en eficiencia, consistencia y adopción.
@@ -1423,7 +1410,7 @@ const DSStack = () => {
   return (
     <section ref={ref} className="container-portfolio pb-20 md:pb-28">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: PURPLE }}>STACK</p>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">STACK</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Herramientas del Sistema</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-10">
           Cada herramienta tiene un rol específico en el pipeline — desde el diseño del token hasta el componente en producción.
@@ -1451,12 +1438,11 @@ const DSStack = () => {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">{tool.desc}</p>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {tool.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[9px] font-medium px-2 py-0.5 rounded-full"
-                    style={{ color: tool.color, background: `${tool.color}12` }}
+                    className="text-xs font-medium px-3 py-1 rounded-full border border-border bg-muted/40 text-muted-foreground"
                   >
                     {tag}
                   </span>
@@ -1480,7 +1466,7 @@ const DSBeforeAfter = () => {
   return (
     <section ref={ref} className="container-portfolio pb-20 md:pb-28">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: PINK }}>ANTES → DESPUÉS</p>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-muted-foreground/60">ANTES → DESPUÉS</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-4">El Impacto Visual</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mb-12">
           La diferencia entre un producto sin sistema y uno construido sobre tokens, componentes y gobernanza.
