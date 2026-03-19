@@ -502,11 +502,11 @@ const DSShowcase = () => {
               <motion.div
                 layoutId="showcase-active-dot"
                 className="h-2 rounded-full"
-                style={{ width: 24, background: `linear-gradient(90deg, ${ORANGE}, ${PINK})` }}
+                style={{ width: 24, background: `linear-gradient(90deg, ${tab.accent})` }}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
             ) : (
-              <div className="w-2 h-2 rounded-full bg-muted/40" />
+              <div className="w-2 h-2 rounded-full bg-foreground/20" />
             )}
           </button>
         ))}
