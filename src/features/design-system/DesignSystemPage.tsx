@@ -124,6 +124,23 @@ const DSHero = () => (
       ))}
     </motion.div>
 
+    {/* Project context tag */}
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.38 }}
+      className="flex flex-wrap items-center gap-2 mb-6"
+    >
+      <span className="text-[11px] font-mono text-muted-foreground/50">Caso de estudio principal →</span>
+      <span
+        className="text-[11px] font-semibold px-3 py-1 rounded-full border"
+        style={{ color: ORANGE, borderColor: `${ORANGE}40`, background: `${ORANGE}0D` }}
+      >
+        Auditbrain
+      </span>
+      <span className="text-[11px] text-muted-foreground/40 font-mono">Suite de productos · construido desde cero · 2 años</span>
+    </motion.div>
+
     {/* Impact numbers */}
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -135,7 +152,7 @@ const DSHero = () => (
         { num: "200+", label: "Componentes\ndocumentados" },
         { num: "500+", label: "Tokens\ndefinidos" },
         { num: "40%", label: "Reducción en\ntiempo de handoff" },
-        { num: "6+", label: "Empresas\nimpactadas" },
+        { num: "2 años", label: "Construcción\ndesde cero" },
       ].map((item) => (
         <div key={item.num}>
           <p
@@ -515,20 +532,20 @@ const DSOverview = () => {
       >
         <div>
           <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: ORANGE }}>OVERVIEW</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">El Sistema detrás del Producto</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">El Sistema detrás de Auditbrain</h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            Durante más de 5 años liderando sistemas de diseño en diferentes empresas, construí y escalé la infraestructura visual que permite a los equipos de producto moverse rápido sin romper la consistencia.
+            Auditbrain es una suite de productos de auditoría empresarial. Cuando llegué, cada módulo tenía su propio estilo visual — sin tokens, sin componentes compartidos, sin documentación. El equipo de desarrollo duplicaba trabajo en cada sprint.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Desde startups en etapa temprana hasta productos con millones de usuarios, el reto siempre es el mismo: crear un lenguaje compartido entre diseño y desarrollo que sobreviva al crecimiento del equipo y la complejidad del producto.
+            En 2 años construí el sistema de diseño desde cero: arquitectura de tokens, librería de componentes en Figma y código, documentación viva y un proceso de gobernanza que permitió al equipo escalar sin perder consistencia.
           </p>
         </div>
 
         <div className="space-y-4">
           {[
-            { label: "CONTEXTO", value: "Producto digital B2B/B2C con múltiples plataformas (web, mobile, desktop)" },
-            { label: "EQUIPO", value: "5–20 diseñadores, 15–60 desarrolladores front-end trabajando en paralelo" },
-            { label: "HERRAMIENTAS", value: "Figma (Variables + Auto Layout), Storybook, GitHub, Notion" },
+            { label: "EMPRESA", value: "Auditbrain — suite de productos de auditoría empresarial" },
+            { label: "TIMELINE", value: "2 años · sistema construido desde cero · entrega continua por sprints" },
+            { label: "HERRAMIENTAS", value: "Figma (Variables + Auto Layout), Storybook, Style Dictionary, GitHub, Notion" },
             { label: "METODOLOGÍA", value: "Atomic Design · Pixel Perfect · Token-first · Accessibility-by-design" },
           ].map(({ label, value }) => (
             <div key={label} className="p-5 rounded-xl border border-border">
@@ -675,14 +692,14 @@ const DSSolution = () => {
 // FOUNDATIONS
 // ─────────────────────────────────────────────
 const colorTokens = [
-  { name: "--ds-color-primary", hex: ORANGE, label: "Primary" },
-  { name: "--ds-color-secondary", hex: PINK, label: "Secondary" },
-  { name: "--ds-color-tertiary", hex: PURPLE, label: "Tertiary" },
-  { name: "--ds-neutral-900", hex: "#0A0A0A", label: "Neutral 900" },
-  { name: "--ds-neutral-700", hex: "#1A1A1A", label: "Neutral 700" },
-  { name: "--ds-neutral-500", hex: "#525252", label: "Neutral 500" },
-  { name: "--ds-neutral-300", hex: "#A3A3A3", label: "Neutral 300" },
-  { name: "--ds-neutral-100", hex: "#F5F5F5", label: "Neutral 100" },
+  { name: "--ds-color-brand", hex: "#1A56DB", label: "Brand" },
+  { name: "--ds-color-success", hex: "#057A55", label: "Success" },
+  { name: "--ds-color-warning", hex: "#C27803", label: "Warning" },
+  { name: "--ds-color-error", hex: "#C81E1E", label: "Error" },
+  { name: "--ds-neutral-950", hex: "#0D0D0D", label: "Neutral 950" },
+  { name: "--ds-neutral-700", hex: "#374151", label: "Neutral 700" },
+  { name: "--ds-neutral-400", hex: "#9CA3AF", label: "Neutral 400" },
+  { name: "--ds-neutral-50", hex: "#F9FAFB", label: "Neutral 50" },
 ];
 
 const figmaTokens = [
@@ -1205,6 +1222,144 @@ const DSImpact = () => {
 };
 
 // ─────────────────────────────────────────────
+// STACK DE HERRAMIENTAS
+// ─────────────────────────────────────────────
+const DSStack = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  const tools = [
+    {
+      name: "Figma",
+      role: "Diseño & Tokens",
+      color: ORANGE,
+      desc: "Variables nativas para tokens primitivos y semánticos. Auto Layout para componentes pixel-perfect. Librería compartida como fuente de verdad para todo el equipo.",
+      tags: ["Variables", "Components", "Auto Layout", "Prototyping"],
+      icon: (
+        <svg viewBox="0 0 38 57" className="w-6 h-6" fill="currentColor">
+          <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/>
+          <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 0 1-19 0z"/>
+          <path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z"/>
+          <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z"/>
+          <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Storybook",
+      role: "Documentación viva",
+      color: PINK,
+      desc: "Cada componente documentado en aislamiento — variantes, estados, controles interactivos y guías de uso. El puente entre diseño y desarrollo sin fricción.",
+      tags: ["Stories", "Controls", "A11y addon", "Docs"],
+      icon: (
+        <svg viewBox="0 0 64 64" className="w-6 h-6" fill="currentColor">
+          <path d="M9.6 2.4L8 17.6l4.8 1.6V57.6L52.8 64l3.2-59.2L9.6 2.4zm26.4 44l-12.8-1.6V28l12.8 1.6V46.4zm0-22.4L23.2 22.4V12l12.8 1.6v10.4z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Style Dictionary",
+      role: "Pipeline de tokens",
+      color: PURPLE,
+      desc: "Transforma los tokens de Figma en variables CSS, JSON y cualquier formato que el equipo de desarrollo necesite. Un cambio en el token, todos los outputs se actualizan.",
+      tags: ["CSS vars", "JSON", "Multi-platform", "Automation"],
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/>
+          <path d="M7 12h4l2-4 4 8-2-4h-2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+    },
+    {
+      name: "GitHub",
+      role: "Versionado & Gobernanza",
+      color: ORANGE,
+      desc: "Versionado semántico (major.minor.patch), pull requests para propuestas de nuevos componentes, changelog automático y revisión de código antes de publicar al sistema.",
+      tags: ["Semantic versioning", "PR reviews", "Changelog", "CI/CD"],
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Notion",
+      role: "Documentación & Principios",
+      color: PINK,
+      desc: "Wiki del sistema de diseño: principios de diseño, guías de contribución, decisiones de arquitectura y roadmap de componentes. Accesible para todo el equipo.",
+      tags: ["Wiki", "Principles", "Roadmap", "ADRs"],
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+          <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.98-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Zeroheight",
+      role: "Design Handoff",
+      color: PURPLE,
+      desc: "Portal de documentación público para el equipo — componentes con especificaciones, guías de uso y código listo. Conectado a Figma para mantener el contenido siempre actualizado.",
+      tags: ["Specs", "Code snippets", "Figma sync", "Team portal"],
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="3"/>
+          <path d="M8 12h8M8 8h5M8 16h3" strokeLinecap="round"/>
+        </svg>
+      ),
+    },
+  ];
+
+  return (
+    <section ref={ref} className="container-portfolio pb-20 md:pb-28">
+      <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: PURPLE }}>STACK</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Herramientas del Sistema</h2>
+        <p className="text-lg text-muted-foreground max-w-2xl mb-10">
+          Cada herramienta tiene un rol específico en el pipeline — desde el diseño del token hasta el componente en producción.
+        </p>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+          {tools.map((tool, i) => (
+            <motion.div
+              key={tool.name}
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.07, duration: 0.5 }}
+              className="p-6 rounded-xl border border-border hover:border-opacity-60 transition-colors duration-300 group"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                  style={{ background: `${tool.color}15`, color: tool.color }}
+                >
+                  {tool.icon}
+                </div>
+                <div>
+                  <p className="font-bold text-sm">{tool.name}</p>
+                  <p className="text-[10px] tracking-wider uppercase text-muted-foreground/60">{tool.role}</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{tool.desc}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {tool.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[9px] font-medium px-2 py-0.5 rounded-full"
+                    style={{ color: tool.color, background: `${tool.color}12` }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+// ─────────────────────────────────────────────
 // BEFORE / AFTER
 // ─────────────────────────────────────────────
 const DSBeforeAfter = () => {
@@ -1477,6 +1632,7 @@ const DesignSystemPage = () => (
       <DSFoundations />
       <DSComponents />
       <DSDocumentation />
+      <DSStack />
       <DSProcess />
       <DSImpact />
       <DSCallToAction />
