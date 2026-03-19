@@ -149,7 +149,7 @@ const AboutTabsSection = () => {
           {/* ── FOTO ─────────────────────────────────────────────────────── */}
           <div className="relative flex-none overflow-hidden
                           w-full h-72 sm:h-96
-                          xl:w-[340px] xl:h-full">
+                          xl:w-[260px] 2xl:w-[320px] xl:h-full">
             <img
               src={sobreMiImg}
               alt="Cristian Suárez"
@@ -175,7 +175,7 @@ const AboutTabsSection = () => {
             ref={tablistRef}
             role="tablist"
             aria-label="Acerca de Cristian"
-            className="flex flex-col xl:flex-row flex-1"
+            className="flex flex-col xl:flex-row flex-1 min-w-0"
             onPointerMove={handlePointerMove}
             onPointerLeave={handlePointerLeave}
           >
