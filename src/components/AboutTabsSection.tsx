@@ -142,14 +142,14 @@ const AboutTabsSection = () => {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="rounded-3xl border border-border bg-background overflow-hidden
-                     flex flex-col lg:flex-row
-                     lg:h-[640px]"
+                     flex flex-col xl:flex-row
+                     xl:h-[640px]"
         >
 
           {/* ── FOTO ─────────────────────────────────────────────────────── */}
           <div className="relative flex-none overflow-hidden
                           w-full h-72 sm:h-96
-                          lg:w-[300px] xl:w-[340px] lg:h-full">
+                          xl:w-[340px] xl:h-full">
             <img
               src={sobreMiImg}
               alt="Cristian Suárez"
@@ -175,7 +175,7 @@ const AboutTabsSection = () => {
             ref={tablistRef}
             role="tablist"
             aria-label="Acerca de Cristian"
-            className="flex flex-col lg:flex-row flex-1"
+            className="flex flex-col xl:flex-row flex-1"
             onPointerMove={handlePointerMove}
             onPointerLeave={handlePointerLeave}
           >
@@ -211,7 +211,7 @@ const AboutTabsSection = () => {
 
                   {/* ── INACTIVE mobile: label izquierda · icono derecha ── */}
                   <div
-                    className="lg:hidden absolute inset-0 flex flex-row items-center
+                    className="xl:hidden absolute inset-0 flex flex-row items-center
                                justify-between px-5 pointer-events-none"
                     style={{
                       opacity: isActive ? 0 : 1,
@@ -229,7 +229,7 @@ const AboutTabsSection = () => {
 
                   {/* ── INACTIVE desktop: icono arriba · label vertical abajo ── */}
                   <div
-                    className="hidden lg:flex absolute inset-0 flex-col items-center
+                    className="hidden xl:flex absolute inset-0 flex-col items-center
                                pointer-events-none pt-8 pb-8"
                     style={{
                       opacity: isActive ? 0 : 1,
@@ -253,8 +253,8 @@ const AboutTabsSection = () => {
                     id={`panel-${t.id}`}
                     aria-labelledby={`tab-${t.id}`}
                     className="relative z-10 h-full flex flex-col justify-between
-                               p-6 sm:p-8 lg:p-10
-                               min-h-[300px] lg:min-h-0 overflow-y-auto"
+                               p-6 sm:p-8 xl:p-10
+                               min-h-[300px] xl:min-h-0 overflow-y-auto"
                     style={{
                       opacity: isActive ? 1 : 0,
                       transition: reduced ? "none" : `opacity 0.35s ${EASE_FN} ${isActive ? "0.18s" : "0s"}`,
