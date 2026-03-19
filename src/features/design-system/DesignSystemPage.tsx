@@ -133,14 +133,20 @@ const DSHero = () => (
       <span className="text-[11px] text-muted-foreground/40 font-mono">Suite de productos · construido desde cero · 2 años</span>
     </motion.div>
 
-    {/* Gradient divider */}
+    {/* Brand divider — same as Index.tsx separator */}
     <motion.div
-      initial={{ scaleX: 0, opacity: 0 }}
-      animate={{ scaleX: 1, opacity: 1 }}
+      initial={{ opacity: 0, scaleX: 0 }}
+      animate={{ opacity: 1, scaleX: 1 }}
       transition={{ duration: 0.8, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
-      style={{ originX: 0, background: `linear-gradient(90deg, ${ORANGE}, ${PINK}, ${PURPLE})` }}
-      className="h-px w-full my-8"
-    />
+      style={{ originX: 0 }}
+      className="flex h-[3px] w-full overflow-hidden rounded-full my-8"
+      aria-hidden="true"
+    >
+      <div className="flex-[2]" style={{ background: "#FDB100" }} />
+      <div className="flex-[3]" style={{ background: "#F75010" }} />
+      <div className="flex-[3]" style={{ background: "#D00952" }} />
+      <div className="flex-[2]" style={{ background: "#6E00A3" }} />
+    </motion.div>
 
     {/* Impact numbers */}
     <motion.div
