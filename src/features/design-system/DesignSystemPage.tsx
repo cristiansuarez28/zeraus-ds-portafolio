@@ -166,12 +166,12 @@ const SlideTokens = () => (
       { name: "--ds-neutral-500", hex: "#525252" },
     ].map((c) => (
       <div key={c.name} className="flex items-center gap-2.5">
-        <div className="w-8 h-8 rounded-lg shrink-0 border border-white/10" style={{ backgroundColor: c.hex }} />
-        <span className="text-[10px] font-mono text-muted-foreground/70 truncate">{c.name}</span>
+        <div className="w-8 h-8 rounded-lg shrink-0 border border-border" style={{ backgroundColor: c.hex }} />
+        <span className="text-[10px] font-mono text-muted-foreground truncate">{c.name}</span>
       </div>
     ))}
-    <div className="col-span-2 mt-1 pt-3 border-t border-border/40">
-      <p className="text-[10px] font-mono text-muted-foreground/40">
+    <div className="col-span-2 mt-1 pt-3 border-t border-border">
+      <p className="text-[10px] font-mono text-muted-foreground/60">
         <span style={{ color: ORANGE }}>--ds-spacing-4</span>{" "}→ 4px &nbsp;|&nbsp;{" "}
         <span style={{ color: PINK }}>--ds-spacing-8</span>{" "}→ 8px &nbsp;|&nbsp;{" "}
         <span style={{ color: PURPLE }}>--ds-spacing-16</span>{" "}→ 16px
@@ -184,24 +184,24 @@ const SlideComponentes = () => (
   <div className="space-y-4 w-full">
     <div className="flex flex-wrap gap-2">
       <button className="px-4 py-2 rounded-lg text-white text-xs font-medium" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }}>Primario</button>
-      <button className="px-4 py-2 rounded-lg border border-white/20 text-xs font-medium text-white/80">Secundario</button>
-      <button className="px-4 py-2 rounded-lg text-xs font-medium text-white/50">Ghost</button>
+      <button className="px-4 py-2 rounded-lg border border-border text-xs font-medium text-foreground/80">Secundario</button>
+      <button className="px-4 py-2 rounded-lg text-xs font-medium text-muted-foreground">Ghost</button>
       <button className="px-4 py-2 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-medium">Error</button>
     </div>
     <div className="flex gap-2">
-      <input readOnly placeholder="Input default" className="flex-1 px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-xs text-white/60 focus:outline-none" />
-      <input readOnly placeholder="Focus" className="flex-1 px-3 py-2 rounded-lg text-xs text-white/60 focus:outline-none" style={{ border: `1px solid ${ORANGE}` }} />
+      <input readOnly placeholder="Input default" className="flex-1 px-3 py-2 rounded-lg border border-border bg-muted/20 text-xs text-muted-foreground focus:outline-none" />
+      <input readOnly placeholder="Focus" className="flex-1 px-3 py-2 rounded-lg text-xs text-muted-foreground focus:outline-none" style={{ border: `1px solid ${ORANGE}` }} />
     </div>
     <div className="grid grid-cols-2 gap-2">
-      <div className="rounded-lg border border-white/10 p-3">
+      <div className="rounded-lg border border-border p-3">
         <div className="w-5 h-5 rounded mb-2" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }} />
         <p className="text-xs font-semibold">Card Base</p>
-        <p className="text-[10px] text-white/40 mt-0.5">Hover state activo</p>
+        <p className="text-[10px] text-muted-foreground mt-0.5">Hover state activo</p>
       </div>
-      <div className="rounded-lg border border-white/5 p-3" style={{ background: `linear-gradient(135deg, ${ORANGE}12, ${PURPLE}10)` }}>
+      <div className="rounded-lg border border-border/50 p-3" style={{ background: `linear-gradient(135deg, ${ORANGE}10, ${PURPLE}08)` }}>
         <div className="w-5 h-5 rounded mb-2" style={{ background: `linear-gradient(135deg, ${PURPLE}, ${ORANGE})` }} />
         <p className="text-xs font-semibold">Card Premium</p>
-        <p className="text-[10px] text-white/40 mt-0.5">Fondo degradado</p>
+        <p className="text-[10px] text-muted-foreground mt-0.5">Fondo degradado</p>
       </div>
     </div>
   </div>
@@ -210,61 +210,61 @@ const SlideComponentes = () => (
 const SlidePatrones = () => (
   <div className="w-full space-y-2.5">
     {/* Mini navbar */}
-    <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 flex items-center justify-between">
+    <div className="rounded-lg border border-border bg-muted/20 px-3 py-2 flex items-center justify-between">
       <div className="flex items-center gap-2">
         <div className="w-4 h-4 rounded" style={{ background: `linear-gradient(135deg, ${ORANGE}, ${PINK})` }} />
         <div className="flex gap-2">
-          <div className="w-8 h-1.5 rounded bg-white/20" /><div className="w-8 h-1.5 rounded bg-white/10" /><div className="w-8 h-1.5 rounded bg-white/10" />
+          <div className="w-8 h-1.5 rounded bg-foreground/20" /><div className="w-8 h-1.5 rounded bg-foreground/10" /><div className="w-8 h-1.5 rounded bg-foreground/10" />
         </div>
       </div>
-      <div className="w-12 h-5 rounded" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})`, opacity: 0.8 }} />
+      <div className="w-12 h-5 rounded" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})`, opacity: 0.85 }} />
     </div>
     {/* Hero block */}
-    <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-3 space-y-2">
-      <div className="w-3/4 h-3 rounded bg-white/30" />
-      <div className="w-1/2 h-2 rounded bg-white/15" />
-      <div className="w-24 h-5 rounded mt-2" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})`, opacity: 0.7 }} />
+    <div className="rounded-lg border border-border bg-muted/20 px-3 py-3 space-y-2">
+      <div className="w-3/4 h-3 rounded bg-foreground/20" />
+      <div className="w-1/2 h-2 rounded bg-foreground/10" />
+      <div className="w-24 h-5 rounded mt-2" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})`, opacity: 0.75 }} />
     </div>
     {/* Card grid */}
     <div className="grid grid-cols-3 gap-2">
       {[0, 1, 2].map((i) => (
-        <div key={i} className="rounded-lg border border-white/10 bg-white/5 p-2 space-y-1.5">
-          <div className="w-full h-6 rounded bg-white/10" />
-          <div className="w-3/4 h-1.5 rounded bg-white/15" />
-          <div className="w-1/2 h-1.5 rounded bg-white/10" />
+        <div key={i} className="rounded-lg border border-border bg-muted/20 p-2 space-y-1.5">
+          <div className="w-full h-6 rounded bg-muted/40" />
+          <div className="w-3/4 h-1.5 rounded bg-foreground/15" />
+          <div className="w-1/2 h-1.5 rounded bg-foreground/10" />
         </div>
       ))}
     </div>
-    <p className="text-[10px] text-white/30 font-mono">navbar · hero · card-grid · form · empty-state</p>
+    <p className="text-[10px] text-muted-foreground/60 font-mono">navbar · hero · card-grid · form · empty-state</p>
   </div>
 );
 
 const SlideDocumentacion = () => (
-  <div className="w-full rounded-xl border border-white/10 overflow-hidden text-xs font-mono">
-    <div className="px-3 py-2 bg-white/5 border-b border-white/10 flex items-center gap-1.5">
-      <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
-      <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
-      <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
-      <span className="ml-2 text-white/30">Button.docs.tsx</span>
+  <div className="w-full rounded-xl border border-border overflow-hidden text-xs font-mono">
+    <div className="px-3 py-2 bg-muted/30 border-b border-border flex items-center gap-1.5">
+      <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
+      <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
+      <div className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
+      <span className="ml-2 text-muted-foreground/60">Button.docs.tsx</span>
     </div>
-    <div className="p-4 space-y-1 text-[11px]">
-      <p><span style={{ color: PURPLE }}>interface</span> <span style={{ color: ORANGE }}>ButtonProps</span> {"{"}</p>
-      <p className="pl-4"><span style={{ color: PINK }}>variant</span>: <span style={{ color: ORANGE }}>'primary'</span> | <span style={{ color: ORANGE }}>'secondary'</span> | <span style={{ color: ORANGE }}>'ghost'</span></p>
-      <p className="pl-4"><span style={{ color: PINK }}>size</span>: <span style={{ color: ORANGE }}>'sm'</span> | <span style={{ color: ORANGE }}>'md'</span> | <span style={{ color: ORANGE }}>'lg'</span></p>
-      <p className="pl-4"><span style={{ color: PINK }}>disabled</span>?: <span style={{ color: PURPLE }}>boolean</span></p>
-      <p className="pl-4"><span style={{ color: PINK }}>onClick</span>?: <span style={{ color: PURPLE }}>() ={">"} void</span></p>
-      <p>{"}"}</p>
-      <p className="mt-2 text-white/20">{"// versión: v2.3.0 · estado: estable · WCAG AA ✓"}</p>
+    <div className="p-4 space-y-1 text-[11px] bg-muted/10">
+      <p className="text-foreground/80"><span style={{ color: PURPLE }}>interface</span> <span style={{ color: ORANGE }}>ButtonProps</span> {"{"}</p>
+      <p className="pl-4 text-foreground/80"><span style={{ color: PINK }}>variant</span>: <span style={{ color: ORANGE }}>'primary'</span> | <span style={{ color: ORANGE }}>'secondary'</span> | <span style={{ color: ORANGE }}>'ghost'</span></p>
+      <p className="pl-4 text-foreground/80"><span style={{ color: PINK }}>size</span>: <span style={{ color: ORANGE }}>'sm'</span> | <span style={{ color: ORANGE }}>'md'</span> | <span style={{ color: ORANGE }}>'lg'</span></p>
+      <p className="pl-4 text-foreground/80"><span style={{ color: PINK }}>disabled</span>?: <span style={{ color: PURPLE }}>boolean</span></p>
+      <p className="pl-4 text-foreground/80"><span style={{ color: PINK }}>onClick</span>?: <span style={{ color: PURPLE }}>() ={">"} void</span></p>
+      <p className="text-foreground/80">{"}"}</p>
+      <p className="mt-2 text-muted-foreground/50">{"// versión: v2.3.0 · estado: estable · WCAG AA ✓"}</p>
     </div>
   </div>
 );
 
 const SlideTemas = () => (
   <div className="w-full grid grid-cols-2 gap-3">
-    {/* Dark */}
-    <div className="rounded-xl border border-white/10 overflow-hidden">
+    {/* Dark — siempre dark, intencional */}
+    <div className="rounded-xl border border-border overflow-hidden">
       <div className="bg-[#0A0A0A] px-3 py-2 border-b border-white/10">
-        <span className="text-[10px] text-white/30 font-mono">dark mode</span>
+        <span className="text-[10px] text-white/40 font-mono">dark mode</span>
       </div>
       <div className="bg-[#0A0A0A] p-3 space-y-2">
         <div className="flex gap-1.5 items-center">
@@ -277,10 +277,10 @@ const SlideTemas = () => (
         <div className="w-16 h-5 rounded text-[10px] flex items-center justify-center text-white font-medium" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})` }}>CTA</div>
       </div>
     </div>
-    {/* Light */}
-    <div className="rounded-xl border border-black/10 overflow-hidden">
+    {/* Light — siempre light, intencional */}
+    <div className="rounded-xl border border-border overflow-hidden">
       <div className="bg-[#F5F5F5] px-3 py-2 border-b border-black/10">
-        <span className="text-[10px] text-black/30 font-mono">light mode</span>
+        <span className="text-[10px] text-black/40 font-mono">light mode</span>
       </div>
       <div className="bg-[#F5F5F5] p-3 space-y-2">
         <div className="flex gap-1.5 items-center">
@@ -293,68 +293,67 @@ const SlideTemas = () => (
         <div className="w-16 h-5 rounded text-[10px] flex items-center justify-center text-white font-medium" style={{ background: `linear-gradient(90deg, ${ORANGE}, ${PINK})` }}>CTA</div>
       </div>
     </div>
-    <p className="col-span-2 text-[10px] font-mono text-white/30">Un cambio en el token → todo el sistema se actualiza</p>
+    <p className="col-span-2 text-[10px] font-mono text-muted-foreground/60">Un cambio en el token → todo el sistema se actualiza</p>
   </div>
 );
 
 const SlideAccesibilidad = () => (
   <div className="w-full space-y-3">
     {[
-      { label: "Primary / Dark BG", ratio: "7.2:1", pass: "AAA", color: ORANGE, pct: 90 },
-      { label: "Secondary / Dark BG", ratio: "5.8:1", pass: "AA", color: PINK, pct: 72 },
-      { label: "Muted text / Dark BG", ratio: "4.6:1", pass: "AA", color: "#A3A3A3", pct: 58 },
-      { label: "Disabled / Dark BG", ratio: "2.1:1", pass: "FAIL", color: "#525252", pct: 26 },
+      { label: "Primary / BG", ratio: "7.2:1", pass: "AAA", color: ORANGE, pct: 90 },
+      { label: "Secondary / BG", ratio: "5.8:1", pass: "AA", color: PINK, pct: 72 },
+      { label: "Muted text / BG", ratio: "4.6:1", pass: "AA", color: "#A3A3A3", pct: 58 },
+      { label: "Disabled / BG", ratio: "2.1:1", pass: "FAIL", color: "#888", pct: 26 },
     ].map((item) => (
       <div key={item.label}>
         <div className="flex items-center justify-between mb-1">
-          <span className="text-[10px] text-white/50">{item.label}</span>
+          <span className="text-[10px] text-muted-foreground">{item.label}</span>
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono" style={{ color: item.color }}>{item.ratio}</span>
-            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${item.pass === "FAIL" ? "bg-red-500/20 text-red-400" : "bg-green-500/20 text-green-400"}`}>{item.pass}</span>
+            <span className="text-[10px] font-mono font-bold" style={{ color: item.color }}>{item.ratio}</span>
+            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${item.pass === "FAIL" ? "bg-red-500/15 text-red-500" : "bg-green-500/15 text-green-600"}`}>{item.pass}</span>
           </div>
         </div>
-        <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
+        <div className="h-1.5 rounded-full bg-muted/50 overflow-hidden">
           <div className="h-full rounded-full" style={{ width: `${item.pct}%`, backgroundColor: item.color }} />
         </div>
       </div>
     ))}
-    <p className="text-[10px] text-white/30 font-mono pt-1">WCAG 2.1 · AA = 4.5:1 · AAA = 7:1</p>
+    <p className="text-[10px] text-muted-foreground/50 font-mono pt-1">WCAG 2.1 · AA = 4.5:1 · AAA = 7:1</p>
   </div>
 );
 
 const SlideAtomicDesign = () => (
   <div className="w-full">
-    {/* Mobile: 2-col grid. Desktop: single row */}
     <div className="grid grid-cols-3 md:flex md:items-center md:justify-between gap-3 mb-4">
       {[
         { name: "Átomos", desc: "Botón, Input", colors: [ORANGE, PINK] },
         { name: "Moléculas", desc: "Search, Card", colors: [PINK, PURPLE] },
         { name: "Organismos", desc: "Navbar, Form", colors: [PURPLE, ORANGE] },
         { name: "Plantillas", desc: "Page layout", colors: [ORANGE, PINK] },
-        { name: "Páginas", desc: "Home, Dashboard", colors: [PINK, PURPLE] },
+        { name: "Páginas", desc: "Home, Dash", colors: [PINK, PURPLE] },
       ].map((level, i, arr) => (
         <div key={level.name} className="flex md:flex-row items-center gap-1.5">
           <div className="flex flex-col items-center gap-1.5 text-center">
             <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 text-xs font-bold"
+              className="w-9 h-9 rounded-xl flex items-center justify-center border border-border text-xs font-bold"
               style={{ background: `linear-gradient(135deg, ${level.colors[0]}20, ${level.colors[1]}20)`, color: level.colors[0] }}
             >
               {i + 1}
             </div>
-            <span className="text-[9px] font-bold tracking-wider text-white/60">{level.name}</span>
-            <span className="text-[8px] text-white/25 hidden md:block">{level.desc}</span>
+            <span className="text-[9px] font-bold tracking-wider text-muted-foreground">{level.name}</span>
+            <span className="text-[8px] text-muted-foreground/50 hidden md:block">{level.desc}</span>
           </div>
-          {i < arr.length - 1 && <span className="text-white/15 text-lg hidden md:block">›</span>}
+          {i < arr.length - 1 && <span className="text-muted-foreground/30 text-lg hidden md:block">›</span>}
         </div>
       ))}
     </div>
-    <div className="border-t border-white/10 pt-3 flex flex-wrap gap-3">
+    <div className="border-t border-border pt-3 flex flex-wrap gap-3">
       {[
         { label: "grid", val: "8px", color: ORANGE },
         { label: "spacing", val: "4/8/16/24px", color: PINK },
         { label: "pixel perfect", val: "✓", color: PURPLE },
       ].map((t) => (
-        <div key={t.label} className="text-[10px] font-mono text-white/30">
+        <div key={t.label} className="text-[10px] font-mono text-muted-foreground/60">
           <span style={{ color: t.color }}>{t.label}:</span> {t.val}
         </div>
       ))}
