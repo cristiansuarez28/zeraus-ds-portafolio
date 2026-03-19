@@ -13,7 +13,7 @@ const navLinks = [
   { label: "Contacto",   to: "/contacto" },
 ];
 
-const DS_ROUTE = "/design-system-v2";
+const DS_ROUTE = "/designsystempro";
 
 const Navbar = () => {
   const [scrolled,  setScrolled]  = useState(false);

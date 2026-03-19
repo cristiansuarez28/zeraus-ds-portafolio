@@ -1721,7 +1721,7 @@ const DesignSystemPage = () => (
     <SEOHead
       title="Design System — Cristian Suarez · Zeraus DS"
       description="Caso de estudio: sistema de diseño construido desde cero para Auditbrain — arquitectura de tokens, librería de componentes, documentación viva y adopción en 4 módulos de producto."
-      url="https://zerausds.com/design-system-v2"
+      url="https://zerausds.com/designsystempro"
       keywords={[
         "Design System",
         "Design Tokens",
