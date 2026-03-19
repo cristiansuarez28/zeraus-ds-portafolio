@@ -489,20 +489,26 @@ const DSShowcase = () => {
         </AnimatePresence>
       </div>
 
-      {/* Dots */}
+      {/* Dots — liquid stretch effect via layoutId */}
       <div className="flex items-center justify-center gap-2 mt-6">
         {showcaseTabs.map((_, i) => (
           <button
             key={i}
             onClick={() => setActive(i)}
             aria-label={`Slide ${i + 1}`}
-            className="transition-all duration-300 rounded-full bg-muted/40 p-2 -m-2"
-            style={{
-              width: i === active ? 24 : 8,
-              height: 8,
-              background: i === active ? `linear-gradient(90deg, ${ORANGE}, ${PINK})` : undefined,
-            }}
-          />
+            className="relative flex items-center justify-center p-2 -m-2"
+          >
+            {i === active ? (
+              <motion.div
+                layoutId="showcase-active-dot"
+                className="h-2 rounded-full"
+                style={{ width: 24, background: `linear-gradient(90deg, ${ORANGE}, ${PINK})` }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            ) : (
+              <div className="w-2 h-2 rounded-full bg-muted/40" />
+            )}
+          </button>
         ))}
       </div>
 
