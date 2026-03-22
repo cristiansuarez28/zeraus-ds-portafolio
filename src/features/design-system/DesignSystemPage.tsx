@@ -602,11 +602,11 @@ const DSChallenge = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="relative p-6 rounded-xl border border-border group hover:border-[#E91E8C]/30 transition-colors duration-300"
+              className="relative overflow-hidden p-6 rounded-xl border border-border group hover:border-[#E91E8C]/30 transition-colors duration-300"
             >
-              <span className="text-5xl font-bold text-muted-foreground/8 absolute top-4 right-5 font-mono select-none">{c.num}</span>
+              <span className="text-5xl font-bold text-muted-foreground/8 absolute top-4 right-5 font-mono select-none pointer-events-none" aria-hidden="true">{c.num}</span>
               <div className="w-6 h-px mb-4" style={{ background: `linear-gradient(90deg, ${PINK}, ${PURPLE})` }} />
-              <h3 className="font-bold mb-2">{c.title}</h3>
+              <h3 className="font-bold mb-2 pr-12">{c.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
             </motion.div>
           ))}
@@ -711,7 +711,10 @@ const colorTokens = [
   { name: "--ds-color-success", hex: "#16A34A", label: "Success" },
   { name: "--ds-color-error", hex: "#DC2626", label: "Error" },
   { name: "--ds-neutral-950", hex: "#0A0A0A", label: "Neutral 950" },
+  { name: "--ds-neutral-800", hex: "#1A1A1A", label: "Neutral 800" },
   { name: "--ds-neutral-600", hex: "#525252", label: "Neutral 600" },
+  { name: "--ds-neutral-400", hex: "#A3A3A3", label: "Neutral 400" },
+  { name: "--ds-neutral-200", hex: "#D4D4D4", label: "Neutral 200" },
   { name: "--ds-neutral-50", hex: "#F5F5F5", label: "Neutral 50" },
 ];
 
@@ -779,16 +782,16 @@ const DSFoundations = () => {
               key="colors"
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3"
+              className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-3"
             >
               {colorTokens.map((c) => (
                 <div key={c.name} className="group">
                   <div
-                    className="w-full aspect-square rounded-xl mb-2 border border-white/5 group-hover:scale-105 transition-transform duration-200"
+                    className="w-full aspect-square rounded-xl mb-2 border border-border group-hover:scale-105 transition-transform duration-200"
                     style={{ backgroundColor: c.hex }}
                   />
-                  <p className="text-xs font-mono text-muted-foreground/70 truncate">{c.name}</p>
-                  <p className="text-xs text-muted-foreground/40">{c.hex}</p>
+                  <p className="text-xs font-mono text-muted-foreground truncate">{c.name}</p>
+                  <p className="text-xs text-muted-foreground/60">{c.hex}</p>
                 </div>
               ))}
             </motion.div>
