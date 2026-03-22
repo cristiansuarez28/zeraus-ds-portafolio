@@ -1,10 +1,10 @@
 import imgDesignSystem   from "@/assets/projects/design-system.jpg";
 import imgMcdKiosko      from "@/assets/projects/mcd-kiosko.jpg";
-import imgMcdKioskoDia   from "@/assets/projects/mcd-kiosko Dia.jpg";
+import imgMcdKioskoDia   from "@/assets/projects/mcd-kiosko-dia.jpg";
 import imgFinappel       from "@/assets/projects/finappel.jpg";
-import imgFinappelDia    from "@/assets/projects/finappel dia.jpg";
+import imgFinappelDia    from "@/assets/projects/finappel-dia.jpg";
 import imgSlyfox         from "@/assets/projects/slyfox.jpg";
-import imgSlyfoxDia      from "@/assets/projects/slyfox dia.jpg";
+import imgSlyfoxDia      from "@/assets/projects/slyfox-dia.jpg";
 
 export type Project = {
   id: string;
