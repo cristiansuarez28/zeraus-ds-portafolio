@@ -1,7 +1,10 @@
-import imgDesignSystem from "@/assets/projects/design-system.jpg";
-import imgMcdKiosko    from "@/assets/projects/mcd-kiosko.jpg";
-import imgFinappel     from "@/assets/projects/finappel.jpg";
-import imgSlyfox       from "@/assets/projects/slyfox.jpg";
+import imgDesignSystem   from "@/assets/projects/design-system.jpg";
+import imgMcdKiosko      from "@/assets/projects/mcd-kiosko.jpg";
+import imgMcdKioskoDia   from "@/assets/projects/mcd-kiosko Dia.jpg";
+import imgFinappel       from "@/assets/projects/finappel.jpg";
+import imgFinappelDia    from "@/assets/projects/finappel dia.jpg";
+import imgSlyfox         from "@/assets/projects/slyfox.jpg";
+import imgSlyfoxDia      from "@/assets/projects/slyfox dia.jpg";
 
 export type Project = {
   id: string;
@@ -13,6 +16,7 @@ export type Project = {
   behance: string;
   tags: string[];
   image: string;
+  imageDia?: string;
 };
 
 export const projects: Project[] = [
@@ -56,6 +60,7 @@ export const projects: Project[] = [
     behance: "https://www.behance.net/gallery/200501949/Mcdonals-Kiosko",
     tags: ["UI/UX", "Interacción", "Retail", "Autoservicio"],
     image: imgMcdKiosko,
+    imageDia: imgMcdKioskoDia,
   },
   {
     id: "finapp",
@@ -76,6 +81,7 @@ export const projects: Project[] = [
     behance: "https://www.behance.net/gallery/174061689/Finappel",
     tags: ["UI", "Mobile", "Finanzas", "Asistente IA"],
     image: imgFinappel,
+    imageDia: imgFinappelDia,
   },
   {
     id: "slyfox",
@@ -97,5 +103,6 @@ export const projects: Project[] = [
       "https://www.behance.net/gallery/235720399/Branding-para-SlyFox-Experiencia-Digital",
     tags: ["Branding", "Identidad", "Dark/Light Mode", "Escalable"],
     image: imgSlyfox,
+    imageDia: imgSlyfoxDia,
   },
 ];

@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { projects } from "./projects.data";
 import { useCardPositions } from "./useCardPositions";
+import { useTheme } from "@/hooks/useTheme";
 
 /**
  * ProjectsSection
@@ -127,7 +128,11 @@ const ProjectModal = ({ project, onClose }: ModalProps) => {
               <div className="hidden sm:block w-full shrink-0 overflow-hidden"
                    style={{ aspectRatio: "16/7" }}>
                 <img src={project.image} alt={project.title}
-                  className="w-full h-full object-cover" />
+                  className={`w-full h-full object-cover ${project.imageDia ? "hidden dark:block" : ""}`} />
+                {project.imageDia && (
+                  <img src={project.imageDia} alt={project.title}
+                    className="block dark:hidden w-full h-full object-cover" />
+                )}
               </div>
 
               {/* ── Botón cerrar ── */}
@@ -151,7 +156,11 @@ const ProjectModal = ({ project, onClose }: ModalProps) => {
                 <div className="sm:hidden w-full overflow-hidden rounded-xl"
                      style={{ aspectRatio: "16/8" }}>
                   <img src={project.image} alt={project.title}
-                    className="w-full h-full object-cover" />
+                    className={`w-full h-full object-cover ${project.imageDia ? "hidden dark:block" : ""}`} />
+                  {project.imageDia && (
+                    <img src={project.imageDia} alt={project.title}
+                      className="block dark:hidden w-full h-full object-cover" />
+                  )}
                 </div>
 
                 {/* Título */}
@@ -306,10 +315,17 @@ const ProjectCard = ({ project, index, cardRef, onOpenModal }: CardProps) => (
       <img
         src={project.image}
         alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-500
-                   group-hover:scale-105"
+        className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${project.imageDia ? "hidden dark:block" : ""}`}
         loading="lazy"
       />
+      {project.imageDia && (
+        <img
+          src={project.imageDia}
+          alt={project.title}
+          className="block dark:hidden w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+      )}
       {/* Dot de color sobre la imagen */}
       <span className="absolute top-3 right-3 w-2 h-2 rounded-full opacity-80"
         style={{ background: PIECE_COLORS[index] }} aria-hidden="true" />
@@ -412,6 +428,7 @@ const ProjectsSection = () => {
   const sectionRef  = useRef<HTMLElement>(null);
   const prefersReduced = useReducedMotion();
   const [activeProject, setActiveProject] = useState<(typeof projects)[number] | null>(null);
+  const { theme } = useTheme();
   const closeModal = useCallback(() => setActiveProject(null), []);
 
   // Refs para medir posición de cada card
